@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/drawable/button_shap.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/drawable/custom_rounded_white_button.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/drawable/ic_flag_1.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/drawable/ic_flag_ch.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/drawable/ic_flag_kg.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/drawable/ic_flag_rus.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/drawable/ic_flag_us.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/font/.xml" value="0.23958333333333334" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/font/roboto.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/appbar.xml" value="0.209375" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_first.xml" value="0.25" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_language.xml" value="0.25" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_opening.xml" value="0.2" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_second.xml" value="0.33" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_third.xml" value="0.209375" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_time.xml" value="0.18" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/menu/bottom_menu.xml" value="0.209375" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/menu/botton_menu.xml" value="0.209375" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/mipmap-anydpi-v26/ic_flag_ru_custom.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.22552083333333334" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

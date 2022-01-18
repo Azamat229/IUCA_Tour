@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:orientation="vertical"
+    tools:context=".SecondFragment">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ГЛАВНЫЙ КОРПУС МУЦА"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="38dp"
+
+        app:srcCompat="@drawable/makhi_and_david2"
+
+      />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="3"
+        android:layout_marginTop="36dp"
+        android:gravity="center_horizontal"
+        android:textStyle="normal"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:text="@string/начало" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="380dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="37dp"
+        android:backgroundTint="@color/strong_primary"
+        android:textColor="@color/white"
+        android:text="ПЕРЕЙТИ К ЭКСКУРСИИ"
+        android:layout_gravity="center_horizontal"
+        />
+
+
+</LinearLayout>

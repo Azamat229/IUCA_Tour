@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    tools:context=".LanguageFragment">
+
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        android:lines="4"
+        android:text="@string/select_language"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/secondary"
+        android:gravity="center_horizontal">
+
+
+        <!--        <com.google.android.material.button.MaterialButton-->
+        <Button
+            android:id="@+id/firstButton"
+            android:layout_width="370dp"
+            android:layout_height="62dp"
+            android:layout_marginTop="100dp"
+            android:drawableLeft="@drawable/flag_us_little"
+            android:drawableRight="@drawable/ic_arrow"
+            android:text="English language"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+
+            />
+
+
+        <Button
+            android:id="@+id/secondButton"
+            android:layout_width="370dp"
+            android:layout_height="62dp"
+            android:layout_below="@id/firstButton"
+            android:layout_marginTop="15dp"
+            android:drawableLeft="@drawable/flag_kg_little"
+            android:drawableRight="@drawable/ic_arrow"
+            android:text="Кыргыз тили"
+            android:textColor="@color/black"
+
+
+            />
+
+        <Button
+            android:id="@+id/thirdButton"
+            android:layout_width="370dp"
+            android:layout_height="62dp"
+            android:layout_below="@id/secondButton"
+            android:layout_marginTop="15dp"
+            android:drawableLeft="@drawable/flag_ru_little"
+            android:drawableRight="@drawable/ic_arrow"
+            android:text="Русский язык"
+            android:textColor="@color/black"
+
+            />
+
+        <Button
+
+            android:layout_width="370dp"
+            android:layout_height="62dp"
+            android:layout_below="@id/thirdButton"
+            android:layout_marginTop="15dp"
+            android:drawableLeft="@drawable/flag_ch_little"
+            android:drawableRight="@drawable/ic_arrow"
+            android:text="中文"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+
+            />
+
+        <!--        <RelativeLayout-->
+        <!--            android:layout_width="370dp"-->
+        <!--            android:layout_height="62dp"-->
+        <!--            android:background="@drawable/custom_rounded_white_button"-->
+        <!--            android:backgroundTint="@color/white"-->
+        <!--            android:gravity="center_vertical">-->
+
+        <!--            <ImageView-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_alignParentRight="true"-->
+        <!--                android:layout_toRightOf="@+id/tv_desc"-->
+        <!--                android:src="@drawable/ic_arrow" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/tv_desc"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_centerInParent="true"-->
+        <!--                android:layout_toRightOf="@+id/iv_video_cam"-->
+        <!--                android:text="English language"-->
+        <!--                android:textColor="@color/black"-->
+        <!--                android:textStyle="bold" />-->
+
+        <!--            <ImageView-->
+        <!--                android:id="@+id/iv_video_cam"-->
+        <!--                android:layout_width="30dp"-->
+        <!--                android:layout_height="30dp"-->
+        <!--                android:layout_alignParentLeft="true"-->
+        <!--                android:src="@drawable/flag_us" />-->
+
+
+        <!--        </RelativeLayout>-->
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

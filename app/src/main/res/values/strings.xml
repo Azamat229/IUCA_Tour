@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">IUCA_Tour</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="iuca_tour">IUCA TOUR</string>
+    <string name="select_language">Select language\nТилди танданыз\nВыберите язык\n选择语言\n</string>
+    <string name="начало">Начните экскурсию,\nчтобы познакомиться \nс историей и атмосферой МУЦА!</string>
+    <string name="time">Выберите\nпродолжительность\nэкскурсии</string>
 </resources>
