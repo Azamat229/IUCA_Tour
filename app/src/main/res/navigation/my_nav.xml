@@ -35,4 +35,9 @@
         android:name="com.GDSC_IUCA.iuca_tour.TimeFragment"
         android:label="fragment_time"
         tools:layout="@layout/fragment_time" />
+    <fragment
+        android:id="@+id/startExcurtionFragment"
+        android:name="com.GDSC_IUCA.iuca_tour.StartExcurtionFragment"
+        android:label="fragment_start_excurtion"
+        tools:layout="@layout/fragment_start_excurtion" />
 </navigation>
