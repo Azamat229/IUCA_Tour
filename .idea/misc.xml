@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_language.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_opening.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_second.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_start_excurtion.xml" value="0.22" />
         <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/drawable/button_shap.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/drawable/custom_rounded_white_button.xml" value="0.22552083333333334" />
