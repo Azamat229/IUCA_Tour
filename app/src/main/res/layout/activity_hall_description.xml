@@ -8,19 +8,42 @@
     android:layout_height="match_parent"
 
     tools:context=".HallDescriptionActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="188dp"
+            android:text="Azamat"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="757dp"
-        android:background="@color/strong_primary"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="@color/red"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Azamat"/>
+    </androidx.appcompat.widget.Toolbar>
+
+
 
 
     <com.google.android.material.navigation.NavigationView
@@ -30,16 +53,6 @@
         android:layout_gravity="start"
         app:menu="@menu/drawer_list"
         app:headerLayout="@layout/nav_header"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/sabie_and_danil"/>
-
-    </LinearLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

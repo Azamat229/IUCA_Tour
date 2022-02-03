@@ -49,25 +49,25 @@ class HallDescriptionActivity : AppCompatActivity(R.layout.activity_hall_descrip
         navView = findViewById(R.id.navView)
 
         // Call setNavigationItemSelectedListener on the NavigationView to detect when items are clicked
-        navView.setNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.myProfile -> {
-                    Toast.makeText(this, "My Profile", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                R.id.people -> {
-                    Toast.makeText(this, "People", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                R.id.settings -> {
-                    Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                else -> {
-                    false
-                }
-            }
-        }
+//        navView.setNavigationItemSelectedListener { menuItem ->
+//            when (menuItem.itemId) {
+//                R.id.myProfile -> {
+//                    Toast.makeText(this, "My Profile", Toast.LENGTH_SHORT).show()
+//                    true
+//                }
+//                R.id.people -> {
+//                    Toast.makeText(this, "People", Toast.LENGTH_SHORT).show()
+//                    true
+//                }
+//                R.id.settings -> {
+//                    Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show()
+//                    true
+//                }
+//                else -> {
+//                    false
+//                }
+//            }
+//        }
 
 
     }

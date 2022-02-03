@@ -3,6 +3,31 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/drawable/ic_passed_blue_burger.xml" value="0.3828125" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/drawable/ic_passed_burger.xml" value="0.3828125" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/activity_hall_description.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/activity_main2.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_excursion.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_first.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_hall.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_hall_description.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_home.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_language.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_nav_header.xml" value="0.1778115501519757" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_opening.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_second.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_start_excurtion.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_third.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/fragment_time.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/nav_header.xml" value="0.2" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/nav_header_hall_description.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/layout/test.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/menu/activity_main_drawer.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/menu/bottom_menu.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/menu/drawer_list.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/menu/hall_description.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/IUCA_Tour/app/src/main/res/menu/main_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/drawable/button_shap.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/drawable/custom_rounded_white_button.xml" value="0.22552083333333334" />

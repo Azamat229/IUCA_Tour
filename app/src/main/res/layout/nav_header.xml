@@ -4,32 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navConstraint"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingStart="25dp"
+        android:layout_height="66dp"
         android:background="@color/strong_primary"
-        android:layout_height="66dp">
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="25dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:src="@drawable/ic_arrow_burger"/>
+            android:src="@drawable/ic_arrow_burger" />
 
         <TextView
             android:id="@+id/textView19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_medium"
             android:layout_marginStart="21dp"
+            android:fontFamily="@font/roboto_medium"
             android:text="Экскурсия"
             android:textColor="@color/white"
             android:textSize="20sp" />
@@ -38,15 +37,12 @@
     </LinearLayout>
 
 
-
-
-
     <TextView
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="26dp"
         android:fontFamily="@font/roboto_medium"
         android:text="Ваша экскурсия"
         android:textColor="@color/black2"
@@ -55,10 +51,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
         android:layout_marginTop="21dp"
-        >
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="30dp"
@@ -70,24 +66,23 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="12dp"
             android:fontFamily="@font/roboto_medium"
             android:text="8/10 остановок"
-            android:textColor="@color/black2"/>
+            android:textColor="@color/black2"
+            android:textSize="16sp" />
 
 
     </LinearLayout>
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
         android:layout_marginTop="21dp"
-        >
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
         <ImageView
             android:id="@+id/imageView6"
             android:layout_width="30dp"
@@ -99,21 +94,213 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="12dp"
             android:fontFamily="@font/roboto_medium"
             android:text="3 минуты осталось"
-            android:textColor="@color/black2"/>
+            android:textColor="@color/black2"
+            android:textSize="16sp" />
 
 
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
-        android:layout_marginTop="26dp"
-        android:background="@color/black2"
-        android:layout_marginBottom="1dp"
         android:layout_height="1sp"
-        tools:ignore="SmallSp" />
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/black3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="26dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Список остановок"
+        android:textColor="@color/black2"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+
+            app:srcCompat="@drawable/ic_passed_blue_burger" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Прихожая"
+            android:textColor="@color/black2"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+
+            app:srcCompat="@drawable/ic_passed_blue_burger" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Board of Trustees"
+            android:textColor="@color/black2"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+
+            app:srcCompat="@drawable/ic_plase_burger" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Столовая"
+            android:textColor="@color/strong_primary"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+
+            app:srcCompat="@drawable/ic_passive_places_burger" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Зона отдыха"
+            android:textColor="@color/black4"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+
+            app:srcCompat="@drawable/ic_passive_places_burger" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Президентский офис"
+            android:textColor="@color/black4"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+
+            app:srcCompat="@drawable/ic_passive_places_burger" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Прихожая"
+            android:textColor="@color/black4"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+
+
+    <Button
+        android:id="@+id/secondButton"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_below="@id/firstButton"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/red"
+
+        android:drawableLeft="@drawable/ic_logout_burger"
+
+        android:text="Завершить экскурсию"
+        android:textColor="@color/white"
+
+        app:layout_constraintTop_toBottomOf="@+id/firstButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
 
 
 </LinearLayout>
