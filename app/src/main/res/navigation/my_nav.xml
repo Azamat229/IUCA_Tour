@@ -3,13 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/startExcurtionFragment">
+    app:startDestination="@id/openingFragment">
 
     <fragment
         android:id="@+id/secondFragment"
         android:name="com.GDSC_IUCA.iuca_tour.SecondFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_second" />
+        tools:layout="@layout/fragment_second" >
+        <action
+            android:id="@+id/action_secondFragment_to_timeFragment"
+            app:destination="@id/timeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/thirdFragment"
         android:name="com.GDSC_IUCA.iuca_tour.ThirdFragment"
@@ -24,20 +28,41 @@
         android:id="@+id/openingFragment"
         android:name="com.GDSC_IUCA.iuca_tour.OpeningFragment"
         android:label="fragment_opening"
-        tools:layout="@layout/fragment_opening" />
+        tools:layout="@layout/fragment_opening" >
+        <action
+            android:id="@+id/action_openingFragment_to_languageFragment"
+            app:destination="@id/languageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/languageFragment"
         android:name="com.GDSC_IUCA.iuca_tour.LanguageFragment"
         android:label="fragment_language"
-        tools:layout="@layout/fragment_language" />
+        tools:layout="@layout/fragment_language" >
+        <action
+            android:id="@+id/action_languageFragment_to_secondFragment"
+            app:destination="@id/secondFragment" />
+    </fragment>
     <fragment
         android:id="@+id/timeFragment"
         android:name="com.GDSC_IUCA.iuca_tour.TimeFragment"
         android:label="fragment_time"
-        tools:layout="@layout/fragment_time" />
+        tools:layout="@layout/fragment_time" >
+        <action
+            android:id="@+id/action_timeFragment_to_startExcurtionFragment"
+            app:destination="@id/startExcurtionFragment" />
+    </fragment>
     <fragment
         android:id="@+id/startExcurtionFragment"
         android:name="com.GDSC_IUCA.iuca_tour.StartExcurtionFragment"
         android:label="fragment_start_excurtion"
-        tools:layout="@layout/fragment_start_excurtion" />
+        tools:layout="@layout/fragment_start_excurtion" >
+        <action
+            android:id="@+id/action_startExcurtionFragment_to_hallFragment"
+            app:destination="@id/hallFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hallFragment"
+        android:name="com.GDSC_IUCA.iuca_tour.HallFragment"
+        android:label="fragment_hall"
+        tools:layout="@layout/fragment_hall" />
 </navigation>
