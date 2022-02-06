@@ -21,7 +21,6 @@
             android:textColor="@color/black2"
             android:textSize="18sp"
 
-
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +43,6 @@
             app:iss_error_image="@drawable/error"
             app:iss_selected_dot="@drawable/default_selected_dot"
             app:iss_unselected_dot="@drawable/default_unselected_dot"
-
             />
 
 

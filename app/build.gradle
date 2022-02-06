@@ -58,5 +58,8 @@ dependencies {
     //Slider
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 
+    // Expandable Text view
+    implementation 'com.ms-square:expandableTextView:0.1.4'
+
 
 }
