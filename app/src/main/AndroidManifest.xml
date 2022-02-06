@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IUCA_Tour">
         <activity
+            android:name=".NavHeaderActivity"
+            android:exported="false" />
+        <activity
             android:name=".HallDescriptionActivityAlt"
             android:exported="false" />
         <activity
