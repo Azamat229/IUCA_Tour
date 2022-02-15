@@ -1,58 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp"
     android:orientation="vertical"
+    android:background="@color/strong_primary"
     tools:context=".SecondFragment">
 
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ГЛАВНЫЙ КОРПУС МУЦА"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        android:layout_marginTop="40dp"
-        android:gravity="center_horizontal"
-        android:textStyle="bold"
-        />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="38dp"
-
-        app:srcCompat="@drawable/makhi_and_david2"
-
-      />
+        android:layout_height="300dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/image_uni" />
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:lines="3"
-        android:layout_marginTop="36dp"
-        android:gravity="center_horizontal"
-        android:textStyle="normal"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:text="@string/начало" />
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/roboto"
+        android:gravity="center"
+        android:text="@string/excu_start_text"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="380dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="37dp"
-        android:backgroundTint="@color/strong_primary"
-        android:textColor="@color/white"
-        android:text="ПЕРЕЙТИ К ЭКСКУРСИИ"
+        android:layout_width="326dp"
+        android:layout_height="52dp"
         android:layout_gravity="center_horizontal"
-        />
+        android:layout_marginBottom="116dp"
+        android:background="@drawable/shape_for_button"
+        android:backgroundTint="@color/white"
+        android:text="ПЕРЕЙТИ К ЭКСКУРСИИ"
+        android:textColor="@color/stronger_primary"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

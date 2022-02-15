@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_page_navigation"
+    app:startDestination="@id/mainPageFragment">
+
+    <fragment
+        android:id="@+id/mainPageFragment"
+        android:name="com.GDSC_IUCA.iuca_tour.ui.MainPageFragment"
+        android:label="fragment_main_page"
+        tools:layout="@layout/fragment_main_page" />
+    <fragment
+        android:id="@+id/mainPageAltFragment"
+        android:name="com.GDSC_IUCA.iuca_tour.ui.MainPageAltFragment"
+        android:label="fragment_main_page_alt"
+        tools:layout="@layout/fragment_main_page_alt" />
+</navigation>

@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/secondFragment"
         android:name="com.GDSC_IUCA.iuca_tour.SecondFragment"
-        android:label="Profile"
+        android:label="Экскурсия"
         tools:layout="@layout/fragment_second" >
         <action
             android:id="@+id/action_secondFragment_to_timeFragment"
@@ -45,7 +45,7 @@
     <fragment
         android:id="@+id/timeFragment"
         android:name="com.GDSC_IUCA.iuca_tour.TimeFragment"
-        android:label="fragment_time"
+        android:label="Экскурсия"
         tools:layout="@layout/fragment_time" >
         <action
             android:id="@+id/action_timeFragment_to_startExcurtionFragment"
@@ -54,7 +54,7 @@
     <fragment
         android:id="@+id/startExcurtionFragment"
         android:name="com.GDSC_IUCA.iuca_tour.StartExcurtionFragment"
-        android:label="fragment_start_excurtion"
+        android:label="Экскурсия"
         tools:layout="@layout/fragment_start_excurtion" >
         <action
             android:id="@+id/action_startExcurtionFragment_to_hallFragment"
@@ -63,6 +63,6 @@
     <fragment
         android:id="@+id/hallFragment"
         android:name="com.GDSC_IUCA.iuca_tour.HallFragment"
-        android:label="fragment_hall"
+        android:label="Экскурсия"
         tools:layout="@layout/fragment_hall" />
 </navigation>

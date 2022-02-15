@@ -15,6 +15,9 @@ class SecondFragment : Fragment(R.layout.fragment_second) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentSecondBinding.bind(view)
+
+
+
         binding.button.setOnClickListener {
 
             Navigation.findNavController(view).navigate(R.id.action_secondFragment_to_timeFragment)

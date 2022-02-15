@@ -31,21 +31,20 @@
             android:id="@+id/image_slider"
             android:layout_width="match_parent"
             android:layout_height="280dp"
+            android:layout_marginTop="?attr/actionBarSize"
             app:iss_auto_cycle="true"
-            app:iss_delay="0"
-            app:iss_period="1000"
             app:iss_corner_radius="5"
+            app:iss_delay="0"
 
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:iss_placeholder="@drawable/placeholder"
             app:iss_error_image="@drawable/error"
+            app:iss_period="1000"
+            app:iss_placeholder="@drawable/placeholder"
             app:iss_selected_dot="@drawable/default_selected_dot"
             app:iss_unselected_dot="@drawable/default_unselected_dot"
-            />
-
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -214,12 +213,13 @@
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="380dp"
-            android:layout_height="60dp"
+            android:layout_width="330dp"
+            android:layout_height="55dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
-            android:backgroundTint="@color/strong_primary"
+            android:backgroundTint="@color/stronger_primary"
             android:text="ПЕРЕЙТИ К ЭКСКУРСИИ"
+            android:background="@drawable/shape_for_button"
 
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"

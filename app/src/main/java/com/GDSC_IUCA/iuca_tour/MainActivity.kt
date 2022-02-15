@@ -3,9 +3,7 @@ package com.GDSC_IUCA.iuca_tour
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-
 import androidx.appcompat.widget.Toolbar
-
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
