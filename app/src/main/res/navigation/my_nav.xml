@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/firstFragment"
         android:name="com.GDSC_IUCA.iuca_tour.FirstFragment"
-        android:label="Home"
+        android:label="МУЦА"
         tools:layout="@layout/fragment_first" />
     <fragment
         android:id="@+id/openingFragment"

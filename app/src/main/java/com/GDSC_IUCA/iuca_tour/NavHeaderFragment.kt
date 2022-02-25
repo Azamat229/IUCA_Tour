@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 
-class NavHeaderFragment : Fragment(R.layout.nav_header) {
+class NavHeaderFragment : Fragment() {
     private lateinit var binding: FragmentNavHeaderBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

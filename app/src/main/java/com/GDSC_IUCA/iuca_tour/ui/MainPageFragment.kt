@@ -10,6 +10,7 @@ import android.view.animation.OvershootInterpolator
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.GDSC_IUCA.iuca_tour.R
 import com.GDSC_IUCA.iuca_tour.databinding.FragmentMainPageBinding
 import com.denzcoskun.imageslider.constants.ScaleTypes
@@ -27,6 +28,10 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMainPageBinding.bind(view)
+
+
+
+
 
         binding.expandText.movementMethod = ScrollingMovementMethod()
 
@@ -54,6 +59,8 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
 
 
+
+
         binding.expandCollabseBtn.setOnClickListener {
 
             val changeBounds: Transition = ChangeBounds()
@@ -69,5 +76,15 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
                 false
             }
         }
+
+
+        binding.nextStationBtn.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_mainPageFragment_to_testFragment)
+        }
+
+
+//        binding.nextStationBtn.setOnClickListener {
+//            Navigation.findNavController(view).navigate(R.id.action_mainPageFragment_to_qrCodeFragment)
+//        }
     }
 }
