@@ -51,6 +51,7 @@
             android:saveEnabled="false"
             android:thumbTint="@color/white" />
 
+
         <TextView
             android:id="@+id/tv_pass"
             android:layout_width="wrap_content"
@@ -124,7 +125,7 @@
             android:layout_marginBottom="20dp">
 
             <TextView
-                android:id="@+id/time_place"
+                android:id="@+id/title_place"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -147,7 +148,7 @@
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/expand_text"
+            android:id="@+id/description_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingStart="16dp"

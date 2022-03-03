@@ -2,17 +2,24 @@ package com.GDSC_IUCA.iuca_tour
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.GDSC_IUCA.iuca_tour.ViewModel.MainViewModel
+import com.GDSC_IUCA.iuca_tour.ViewModel.MainViewModelFactory
 import com.GDSC_IUCA.iuca_tour.databinding.ActivityMainBinding
+import com.GDSC_IUCA.iuca_tour.repository.Repository
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity : AppCompatActivity() {
+    lateinit var viewModel: MainViewModel
 
     private lateinit var binding: ActivityMainBinding
 
@@ -26,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.myToolbar)
 
 
+
         // bottom navigation
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView);
         val navController = findNavController(R.id.fragmentContainerView)
@@ -35,7 +43,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         bottomNavigationView.setupWithNavController(navController)
-
 
         val config = AppBarConfiguration(navController.graph)
         findViewById<Toolbar>(R.id.my_toolbar).setupWithNavController(navController, config)
