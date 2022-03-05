@@ -70,12 +70,15 @@
         <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/mipmap-anydpi-v26/ic_flag_ru_custom.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/aza/AndroidStudioProjects/IUCA_Tour/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.22552083333333334" />
+        <entry key="app/src/main/res/drawable/ic_play.xml" value="0.1895" />
+        <entry key="app/src/main/res/drawable/ic_play_btn_6.xml" value="0.1895" />
+        <entry key="app/src/main/res/drawable/ic_play_button.xml" value="0.196" />
         <entry key="app/src/main/res/drawable/shape_for_button.xml" value="0.246" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_main_page.xml" value="0.2942708333333333" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.2942708333333333" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.2942708333333333" />
-        <entry key="app/src/main/res/layout/fragment_main_page.xml" value="0.2942708333333333" />
+        <entry key="app/src/main/res/layout/fragment_main_page.xml" value="0.37116851806640627" />
         <entry key="app/src/main/res/layout/fragment_opening.xml" value="0.17028985507246377" />
         <entry key="app/src/main/res/layout/fragment_test.xml" value="0.25" />
       </map>
