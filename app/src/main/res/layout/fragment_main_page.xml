@@ -13,22 +13,20 @@
     <com.denzcoskun.imageslider.ImageSlider
         android:id="@+id/image_slider"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-
+        android:layout_height="300dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
         app:iss_auto_cycle="true"
         app:iss_corner_radius="5"
         app:iss_delay="0"
         app:iss_error_image="@drawable/error"
-        app:iss_period="1000"
-        app:iss_placeholder="@drawable/placeholder"
+        app:iss_period="3000"
         app:iss_selected_dot="@drawable/default_selected_dot"
         app:iss_unselected_dot="@drawable/default_unselected_dot"
         app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -47,8 +45,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
-            android:progressTint="#7C9CDB"
             android:progress="0"
+            android:progressTint="#7C9CDB"
             android:saveEnabled="false"
             android:thumbTint="@color/white" />
 
@@ -74,7 +72,7 @@
 
 
         <ImageButton
-            android:id="@+id/pauseBtn"
+            android:id="@+id/back_15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="43dp"
@@ -84,8 +82,6 @@
             android:enabled="false" />
 
 
-
-
         <ImageButton
             android:id="@+id/playBtn"
             android:layout_width="46dp"
@@ -93,8 +89,6 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="37dp"
             android:background="@drawable/ic_play_btn_6" />
-
-
 
 
         <ImageButton
@@ -115,7 +109,7 @@
     <LinearLayout
         android:id="@+id/mainTextBoxLinear"
         android:layout_width="match_parent"
-        android:layout_height="340dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="80dp"
         android:background="@color/white"
         android:orientation="vertical"
@@ -156,7 +150,7 @@
         <TextView
             android:id="@+id/description_text"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="200dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:scrollbars="vertical"

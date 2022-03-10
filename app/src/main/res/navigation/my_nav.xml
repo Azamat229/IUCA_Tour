@@ -62,7 +62,7 @@
     </fragment>
     <fragment
         android:id="@+id/hallFragment"
-        android:name="com.GDSC_IUCA.iuca_tour.HallFragment"
+        android:name="com.GDSC_IUCA.iuca_tour.ui.MapFragment"
         android:label="Экскурсия"
         tools:layout="@layout/fragment_hall" />
 </navigation>

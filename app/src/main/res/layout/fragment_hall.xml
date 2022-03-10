@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:background="#F0F3FA"
     android:gravity="center_horizontal"
-    tools:context=".HallFragment">
+    tools:context=".ui.MapFragment">
 
 
     <TextView

@@ -24,9 +24,9 @@
 
     <fragment
         android:id="@+id/testFragment"
-        android:name="com.GDSC_IUCA.iuca_tour.TestFragment"
+        android:name="com.GDSC_IUCA.iuca_tour.ui.Map2Fragment"
         android:label="fragment_test"
-        tools:layout="@layout/fragment_test" >
+        tools:layout="@layout/fragment_map2" >
 
     </fragment>
 

@@ -24,23 +24,27 @@ import com.GDSC_IUCA.iuca_tour.ViewModel.MainViewModelFactory
 import com.GDSC_IUCA.iuca_tour.databinding.FragmentMainPageBinding
 import com.GDSC_IUCA.iuca_tour.repository.Repository
 import com.denzcoskun.imageslider.models.SlideModel
-import java.io.IOException
+import java.util.concurrent.TimeUnit
 
 
 class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
     private lateinit var binding: FragmentMainPageBinding
+
     private lateinit var layout: ConstraintLayout
     private val constraintSetOld: ConstraintSet = ConstraintSet()
     private val constraintSetNew: ConstraintSet = ConstraintSet()
     private var altLayout = false
-    lateinit var runnable: Runnable
-    private var handler = Handler()
+
 
     // Retrofit stuff
     lateinit var viewModel: MainViewModel
 
-    lateinit var mediaPlayer: MediaPlayer
+    // Media player
+    private lateinit var mediaPlayer: MediaPlayer
+    private var totalTime: Int = 0
+    lateinit var runnable: Runnable
+    private var handler = Handler()
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -58,42 +62,47 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
             if (response.isSuccessful) {
 //                Log.d("response", response.body()?.get(0)?.id.toString())
-//                Log.d("response", response.body()?.get(0)?.name.toString())
 //                response.body()?.get(0)?.let { Log.d("response", it.name) }
-//                response.body()?.get(0)?.let { Log.d("response", it.desc) }
                 binding.titlePlace.text = response.body()?.get(0)?.name.toString()
-//                binding.descriptionText.text = response.body()?.get(0)?.desc.toString()
                 val test = response.body()?.get(0)?.images?.get(0)
-                val test2 = test?.replace("[]", "")
-                val test3 = "http://159.89.97.31:8000$test2"
 
-                binding.descriptionText.text = test3
-
-                //    < - - - - SLIDER IMAGES- - - - >
                 val imageList = ArrayList<SlideModel>() // Create image list
 
-                imageList.add(SlideModel(test3))
+                response.body()?.get(1)?.images?.forEach {
+                    //    < - - - - SLIDER IMAGES- - - - >
 
-                imageList.add(SlideModel(test3))
+                    val t = it.replace("[]","")
+                    var t2 = "http://159.89.97.31:8000$t"
+                    imageList.add(SlideModel(t2))
+
+
+                }
+
+                binding.descriptionText.text = response.body()?.get(0)?.desc
+
 
 
                 val imageS = binding.imageSlider
                 imageS.setImageList(imageList)
 
-                var audio: String = response.body()?.get(0)?.audio.toString()
+                var audio: String = response.body()?.get(1)?.audio.toString()
                 audio = "http://159.89.97.31:8000$audio"
                 Log.d("response MEADI", audio)
 
                 // < - - - MEDIA PLAYER - - - >
 
                 val url = audio
-                val mediaPlayer = MediaPlayer()
+                mediaPlayer = MediaPlayer()
                 mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
                 mediaPlayer.setDataSource(url)
+                mediaPlayer.isLooping = true
                 mediaPlayer.prepare()
+                totalTime = mediaPlayer.duration
 
 
-
+                var duration = mediaPlayer.duration
+                var sDuration: String = convertFormat(duration)
+                binding.tvDue.text = sDuration
 
                 binding.playBtn.setOnClickListener {
 
@@ -106,6 +115,25 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
                     }
                 }
 
+                binding.ahead15.setOnClickListener {
+                    var currentPosition = mediaPlayer.currentPosition
+                    val duration:Int = mediaPlayer.duration
+                    if(mediaPlayer.isPlaying && duration != currentPosition){
+                        currentPosition += 15000
+                        binding.tvPass.setText(convertFormat(currentPosition)).toString()
+                        mediaPlayer.seekTo(currentPosition)
+                    }
+                }
+
+                binding.back15.setOnClickListener {
+                    var currentPosition = mediaPlayer.currentPosition
+                    val duration: Int = mediaPlayer.duration
+                    if(mediaPlayer.isPlaying && duration != currentPosition){
+                        currentPosition -= 15000
+                        binding.tvPass.setText(convertFormat(currentPosition)).toString()
+                        mediaPlayer.seekTo(currentPosition)
+                    }
+                }
 
 
                 binding.seekBar.progress = 0
@@ -116,6 +144,8 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
                         if(changed){
                             mediaPlayer.seekTo(position)
                         }
+                        binding.tvPass.text = convertFormat(mediaPlayer.currentPosition)
+
                     }
 
                     override fun onStartTrackingTouch(p0: SeekBar?) {
@@ -128,7 +158,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
                 runnable = Runnable {
                     binding.seekBar.progress = mediaPlayer.currentPosition
-                    handler.postDelayed(runnable, 1000)
+                    handler.postDelayed(runnable, 500)
                 }
                 handler.postDelayed(runnable, 1000)
                 mediaPlayer.setOnCompletionListener {
@@ -136,15 +166,14 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
                     binding.seekBar.progress = 0
                 }
 
-                // Method to initialize seek bar and audio stats
-
-
-
             } else {
                 Log.d("response", response.errorBody().toString())
             }
 
         })
+
+
+
 
 
         // < - - -  SCROLLING - - - >
@@ -182,27 +211,12 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
                 .navigate(R.id.action_mainPageFragment_to_testFragment)
         }
 
-
-
-
     }
 
 
-
-//
-//    // Creating an extension property to get the media player time duration in seconds
-//    val MediaPlayer.seconds:Int
-//        get() {
-//            return this.duration / 1000
-//        }
-//    // Creating an extension property to get media player current position in seconds
-//    val MediaPlayer.currentSeconds:Int
-//        get() {
-//            return this.currentPosition/1000
-//        }
-
-
-
-
-
+    private fun convertFormat(duration: Int): String {
+        return String.format("%02d:%02d", TimeUnit.MILLISECONDS.toMinutes(duration.toLong()),
+            TimeUnit.MILLISECONDS.toSeconds(duration.toLong()) -
+                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration.toLong())))
+    }
 }

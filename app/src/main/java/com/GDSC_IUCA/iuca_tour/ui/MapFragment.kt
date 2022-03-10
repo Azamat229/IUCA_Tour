@@ -1,17 +1,22 @@
-package com.GDSC_IUCA.iuca_tour
+package com.GDSC_IUCA.iuca_tour.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.GDSC_IUCA.iuca_tour.R
+import com.GDSC_IUCA.iuca_tour.ViewModel.MapViewModel
+import com.GDSC_IUCA.iuca_tour.ViewModel.MapViewModelFactory
 import com.GDSC_IUCA.iuca_tour.databinding.FragmentHallBinding
-import com.GDSC_IUCA.iuca_tour.ui.MainPageActivity
+import com.GDSC_IUCA.iuca_tour.repository.Repository
 
 
-class HallFragment : Fragment(R.layout.fragment_hall) {
+class MapFragment : Fragment(R.layout.fragment_hall) {
     private lateinit var binding: FragmentHallBinding
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -21,7 +26,5 @@ class HallFragment : Fragment(R.layout.fragment_hall) {
             val intent = Intent (activity, MainPageActivity::class.java)
             activity?.startActivity(intent)
         }
-
     }
-
 }
