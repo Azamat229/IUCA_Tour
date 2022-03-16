@@ -10,11 +10,20 @@ import retrofit2.Response
 
 class MainViewModel(private val repository: Repository): ViewModel() {
      val myResponse: MutableLiveData<Response<List<PlacesItem>>> = MutableLiveData()
+     val myResponseItem: MutableLiveData<Response<PlacesItem>> = MutableLiveData()
 
     fun getPlace(){
         viewModelScope.launch {
             val response = repository.getPlaces()
             myResponse.value = response
+        }
+    }
+
+    fun getItemPlace(number: Int){
+        viewModelScope.launch {
+            val response = repository.getItemPlace(number)
+            myResponseItem.value = response
+
         }
     }
 

@@ -6,6 +6,7 @@ import com.GDSC_IUCA.iuca_tour.models.Preset
 import com.GDSC_IUCA.iuca_tour.models.PresetItem
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface PlaceApi {
@@ -19,6 +20,14 @@ interface PlaceApi {
     @GET("api/preset/1")
     suspend fun getPresetLong(
     ): Response<PresetItem>
+
+    @GET("api/place/{id}")
+    suspend fun getItemPlace(
+        @Path("id") number: Int,
+    @Query("lang")
+    language: String = "ENG"
+
+    ): Response<PlacesItem>
 
 
 }

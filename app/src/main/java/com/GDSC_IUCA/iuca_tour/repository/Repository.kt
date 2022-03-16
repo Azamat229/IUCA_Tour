@@ -14,4 +14,8 @@ class Repository {
     suspend fun getPresent(): Response<PresetItem>{
         return RetrofitInstance.api.getPresetLong()
     }
+
+    suspend fun getItemPlace(number: Int): Response<PlacesItem>{
+        return RetrofitInstance.api.getItemPlace(number)
+    }
 }

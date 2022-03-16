@@ -11,6 +11,7 @@ import androidx.navigation.Navigation
 import com.GDSC_IUCA.iuca_tour.ViewModel.MainViewModel
 import com.GDSC_IUCA.iuca_tour.ViewModel.MainViewModelFactory
 import com.GDSC_IUCA.iuca_tour.databinding.FragmentOpeningBinding
+import com.GDSC_IUCA.iuca_tour.recycler.RecyclerActivity
 import com.GDSC_IUCA.iuca_tour.repository.Repository
 import com.GDSC_IUCA.iuca_tour.ui.MainPageActivity
 
@@ -26,6 +27,10 @@ class OpeningFragment : Fragment(R.layout.fragment_opening) {
         binding.textView4.setOnClickListener {
             Navigation.findNavController(view)
                 .navigate(R.id.action_openingFragment_to_languageFragment)
+        }
+        binding.tvRecycler.setOnClickListener {
+            val intent = Intent (activity, RecyclerActivity::class.java)
+            activity?.startActivity(intent)
         }
 
 

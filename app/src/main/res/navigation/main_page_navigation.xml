@@ -28,6 +28,9 @@
         android:label="fragment_test"
         tools:layout="@layout/fragment_map2" >
 
+        <action
+            android:id="@+id/action_testFragment_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
     </fragment>
 
 

@@ -1,6 +1,7 @@
 package com.GDSC_IUCA.iuca_tour.ui
 
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 
 import androidx.core.app.ActivityCompat
@@ -18,7 +19,6 @@ import com.budiyev.android.codescanner.CodeScanner
 import com.google.android.material.navigation.NavigationView
 
 import android.os.Bundle
-
 
 
 class MainPageActivity : AppCompatActivity() {
@@ -51,8 +51,10 @@ class MainPageActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
 
+        val sharedPreference =  getSharedPreferences("PREFERENCE_NAME", Context.MODE_PRIVATE)
 
     }
+
 
 
 

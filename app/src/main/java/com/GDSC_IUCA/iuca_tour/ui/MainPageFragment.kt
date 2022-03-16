@@ -35,6 +35,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
     private val constraintSetOld: ConstraintSet = ConstraintSet()
     private val constraintSetNew: ConstraintSet = ConstraintSet()
     private var altLayout = false
+    private var idOfPlaces: Int = 1
 
 
     // Retrofit stuff
@@ -52,45 +53,43 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         binding = FragmentMainPageBinding.bind(view)
 
 
+        //mainP.<-id
+
         // Retrofit stuff
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        viewModel.getPlace()
-        viewModel.myResponse.observe(viewLifecycleOwner, Observer { response ->
 
+
+        viewModel.getItemPlace(idOfPlaces)
+
+        viewModel.myResponseItem.observe(viewLifecycleOwner, Observer { response ->
 
             if (response.isSuccessful) {
-//                Log.d("response", response.body()?.get(0)?.id.toString())
-//                response.body()?.get(0)?.let { Log.d("response", it.name) }
-                binding.titlePlace.text = response.body()?.get(0)?.name.toString()
-                val test = response.body()?.get(0)?.images?.get(0)
+
+
+                binding.titlePlace.text = response.body()?.name
 
                 val imageList = ArrayList<SlideModel>() // Create image list
 
-                response.body()?.get(1)?.images?.forEach {
+                response.body()?.images?.forEach {
                     //    < - - - - SLIDER IMAGES- - - - >
 
-                    val t = it.replace("[]","")
-                    var t2 = "http://159.89.97.31:8000$t"
+                    val t = it.replace("[]", "")
+                    var t2 = "http://159.89.97.31$t"
                     imageList.add(SlideModel(t2))
-
-
                 }
 
-                binding.descriptionText.text = response.body()?.get(0)?.desc
-
-
+                binding.descriptionText.text = response.body()?.desc
 
                 val imageS = binding.imageSlider
                 imageS.setImageList(imageList)
 
-                var audio: String = response.body()?.get(1)?.audio.toString()
-                audio = "http://159.89.97.31:8000$audio"
+                var audio: String = response.body()?.audio.toString()
+                audio = "http://159.89.97.31$audio"
                 Log.d("response MEADI", audio)
 
                 // < - - - MEDIA PLAYER - - - >
-
                 val url = audio
                 mediaPlayer = MediaPlayer()
                 mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
@@ -99,9 +98,8 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
                 mediaPlayer.prepare()
                 totalTime = mediaPlayer.duration
 
-
-                var duration = mediaPlayer.duration
-                var sDuration: String = convertFormat(duration)
+                val duration = mediaPlayer.duration
+                val sDuration: String = convertFormat(duration)
                 binding.tvDue.text = sDuration
 
                 binding.playBtn.setOnClickListener {
@@ -117,8 +115,8 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
                 binding.ahead15.setOnClickListener {
                     var currentPosition = mediaPlayer.currentPosition
-                    val duration:Int = mediaPlayer.duration
-                    if(mediaPlayer.isPlaying && duration != currentPosition){
+                    val duration: Int = mediaPlayer.duration
+                    if (mediaPlayer.isPlaying && duration != currentPosition) {
                         currentPosition += 15000
                         binding.tvPass.setText(convertFormat(currentPosition)).toString()
                         mediaPlayer.seekTo(currentPosition)
@@ -128,24 +126,22 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
                 binding.back15.setOnClickListener {
                     var currentPosition = mediaPlayer.currentPosition
                     val duration: Int = mediaPlayer.duration
-                    if(mediaPlayer.isPlaying && duration != currentPosition){
+                    if (mediaPlayer.isPlaying && duration != currentPosition) {
                         currentPosition -= 15000
                         binding.tvPass.setText(convertFormat(currentPosition)).toString()
                         mediaPlayer.seekTo(currentPosition)
                     }
                 }
 
-
                 binding.seekBar.progress = 0
                 binding.seekBar.max = mediaPlayer.duration
-
-                binding.seekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
+                binding.seekBar.setOnSeekBarChangeListener(object :
+                    SeekBar.OnSeekBarChangeListener {
                     override fun onProgressChanged(p0: SeekBar?, position: Int, changed: Boolean) {
-                        if(changed){
+                        if (changed) {
                             mediaPlayer.seekTo(position)
                         }
                         binding.tvPass.text = convertFormat(mediaPlayer.currentPosition)
-
                     }
 
                     override fun onStartTrackingTouch(p0: SeekBar?) {
@@ -173,9 +169,6 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         })
 
 
-
-
-
         // < - - -  SCROLLING - - - >
         binding.descriptionText.movementMethod = ScrollingMovementMethod()
 
@@ -184,9 +177,6 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         layout = binding.layout
         constraintSetOld.clone(layout)
         constraintSetNew.clone(activity, R.layout.fragment_main_page_alt)
-
-
-
 
 
         binding.expandCollabseBtn.setOnClickListener {
@@ -210,13 +200,14 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
             Navigation.findNavController(view)
                 .navigate(R.id.action_mainPageFragment_to_testFragment)
         }
-
     }
 
 
     private fun convertFormat(duration: Int): String {
-        return String.format("%02d:%02d", TimeUnit.MILLISECONDS.toMinutes(duration.toLong()),
+        return String.format(
+            "%02d:%02d", TimeUnit.MILLISECONDS.toMinutes(duration.toLong()),
             TimeUnit.MILLISECONDS.toSeconds(duration.toLong()) -
-                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration.toLong())))
+                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration.toLong()))
+        )
     }
 }
