@@ -17,7 +17,7 @@ interface PlaceApi {
 
     ): Response<List<PlacesItem>>
 
-    @GET("api/preset/1")
+    @GET("api/preset/1") // long preset
     suspend fun getPresetLong(
     ): Response<PresetItem>
 

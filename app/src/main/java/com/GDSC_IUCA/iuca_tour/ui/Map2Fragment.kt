@@ -21,13 +21,6 @@ import com.GDSC_IUCA.iuca_tour.repository.Repository
 class Map2Fragment : Fragment() {
     private lateinit var binding: FragmentMap2Binding
 
-    //Retrofit
-    lateinit var viewModel: MapViewModel
-
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,65 +38,26 @@ class Map2Fragment : Fragment() {
             activity?.startActivity(intent)
         }
 
-
-        // Retrofit
-        val repository = Repository()
-        val viewModelFactory = MapViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MapViewModel::class.java)
-        viewModel.getPreset()
-        viewModel.myResponse.observe(viewLifecycleOwner, Observer{ response ->
-            if(response.isSuccessful){
-                Log.d("body", response.body().toString())
-
-                val presetMap: MutableMap<Int, String> = mutableMapOf()
-
-                for(i in 0..2){
-
-                    presetMap.put(response.body()!!.places[i].order, response.body()!!.places[i].place.toString())
-                    Log.d("test", presetMap.values.toString() )
-                    Log.d("test", presetMap.keys.toString() )
-                }
-                val orderIdOfPlaces = ArrayList<String>()
-                for (i in 1..3){
-                    orderIdOfPlaces.add(presetMap[i].toString())
-                }
-                for(i in orderIdOfPlaces)
-                    Log.d("ResultFinalListOfPlaces", i.toString())
-                saveData(orderIdOfPlaces)
-
-
-
-
-                Log.d("loop", print(presetMap).toString())
-
-
-                loadData()
-
-            }else{
-                Log.d("body", response.body().toString())
-            }
-        })
-
-
+        saveCountData()
         binding.nextStationBtn.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_testFragment_to_mainPageFragment)
         }
     }
 
-    private fun loadData() {
-        val sharedPre = this.activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
-        val savedInt = sharedPre?.getInt("pref",0)
-
-    }
-
-    private fun saveData(orderIdOfPlaces: ArrayList<String>) {
-        val setA = mutableSetOf<String>()
-        setA.addAll(orderIdOfPlaces)
+    private fun saveCountData () {
 
         val sharedPre = this.activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
         val editor = sharedPre?.edit()
+        var counter = sharedPre?.getInt("counter",0)
+
+        Log.d("Counter", counter.toString())
+
+        counter = counter!!.toInt() + 1
+
+        Log.d("Counter2", counter.toString())
+
         editor?.apply {
-            putStringSet("SetOrderedPlaces", setA)
+            putInt("counter", counter)
         }?.apply()
     }
 }

@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_openingFragment_to_languageFragment"
             app:destination="@id/languageFragment" />
+        <action
+            android:id="@+id/action_openingFragment_to_startExcurtionFragment"
+            app:destination="@id/startExcurtionFragment" />
     </fragment>
     <fragment
         android:id="@+id/languageFragment"

@@ -7,16 +7,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="2dp"
+    app:cardPreventCornerOverlap="false"
     tools:context=".ui.MainPageFragment">
 
 
     <com.denzcoskun.imageslider.ImageSlider
         android:id="@+id/image_slider"
-        android:layout_width="wrap_content"
-        android:layout_height="300dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="0dp"
+        android:layout_margin="0dp"
         android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        app:iss_auto_cycle="true"
+        android:scaleType="fitXY"
         app:iss_corner_radius="5"
         app:iss_delay="0"
         app:iss_error_image="@drawable/error"

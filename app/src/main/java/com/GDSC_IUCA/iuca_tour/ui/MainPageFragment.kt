@@ -1,7 +1,7 @@
 package com.GDSC_IUCA.iuca_tour.ui
 
-
 import android.annotation.SuppressLint
+import android.content.Context
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -26,19 +26,15 @@ import com.GDSC_IUCA.iuca_tour.repository.Repository
 import com.denzcoskun.imageslider.models.SlideModel
 import java.util.concurrent.TimeUnit
 
-
 class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
     private lateinit var binding: FragmentMainPageBinding
-
     private lateinit var layout: ConstraintLayout
     private val constraintSetOld: ConstraintSet = ConstraintSet()
     private val constraintSetNew: ConstraintSet = ConstraintSet()
     private var altLayout = false
-    private var idOfPlaces: Int = 1
 
-
-    // Retrofit stuff
+    // Retrofit code
     lateinit var viewModel: MainViewModel
 
     // Media player
@@ -50,24 +46,33 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Shared preference
+        val sharedPre = this.activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
+
+        val counter = sharedPre?.getInt("counter", 0)
+        val str = sharedPre?.getString("setOrderedPlaces", null)
+
+        val chars: List<Char> = str!!.toList()
+
+        Log.d("set", chars.toString())
+        val idOfPlaces = chars.elementAt(counter!!.toInt())
+        var id = idOfPlaces.digitToInt()
+        Log.d("idOfPlace",idOfPlaces.toString())
+        Log.d("counter",counter.toString())
+
         binding = FragmentMainPageBinding.bind(view)
-
-
-        //mainP.<-id
 
         // Retrofit stuff
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
-
-        viewModel.getItemPlace(idOfPlaces)
+        viewModel.getItemPlace(id)
 
         viewModel.myResponseItem.observe(viewLifecycleOwner, Observer { response ->
 
             if (response.isSuccessful) {
-
-
                 binding.titlePlace.text = response.body()?.name
 
                 val imageList = ArrayList<SlideModel>() // Create image list
@@ -143,13 +148,10 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
                         }
                         binding.tvPass.text = convertFormat(mediaPlayer.currentPosition)
                     }
-
                     override fun onStartTrackingTouch(p0: SeekBar?) {
                     }
-
                     override fun onStopTrackingTouch(p0: SeekBar?) {
                     }
-
                 })
 
                 runnable = Runnable {
@@ -167,11 +169,8 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
             }
 
         })
-
-
         // < - - -  SCROLLING - - - >
         binding.descriptionText.movementMethod = ScrollingMovementMethod()
-
 
         //    < - - - ANIMATION  - - - >
         layout = binding.layout
@@ -195,13 +194,11 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
             }
         }
 
-
         binding.nextStationBtn.setOnClickListener {
             Navigation.findNavController(view)
                 .navigate(R.id.action_mainPageFragment_to_testFragment)
         }
     }
-
 
     private fun convertFormat(duration: Int): String {
         return String.format(

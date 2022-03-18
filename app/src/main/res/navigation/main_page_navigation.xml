@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_main_page" >
         <action
             android:id="@+id/action_mainPageFragment_to_testFragment"
-            app:destination="@id/testFragment" />
+            app:destination="@id/Map" />
     </fragment>
 
     <fragment
@@ -23,9 +23,9 @@
 
 
     <fragment
-        android:id="@+id/testFragment"
+        android:id="@+id/Map"
         android:name="com.GDSC_IUCA.iuca_tour.ui.Map2Fragment"
-        android:label="fragment_test"
+        android:label="Map"
         tools:layout="@layout/fragment_map2" >
 
         <action
