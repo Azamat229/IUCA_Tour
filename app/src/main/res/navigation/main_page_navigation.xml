@@ -13,6 +13,11 @@
         <action
             android:id="@+id/action_mainPageFragment_to_testFragment"
             app:destination="@id/Map" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_my_nav"
+            app:destination="@id/my_nav" />
+
+
     </fragment>
 
     <fragment
@@ -31,7 +36,9 @@
         <action
             android:id="@+id/action_testFragment_to_mainPageFragment"
             app:destination="@id/mainPageFragment" />
+
     </fragment>
 
+    <include app:graph="@navigation/my_nav" />
 
 </navigation>

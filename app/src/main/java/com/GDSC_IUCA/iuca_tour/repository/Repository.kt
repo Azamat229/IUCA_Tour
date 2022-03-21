@@ -11,8 +11,8 @@ class Repository {
 
     }
 
-    suspend fun getPresent(): Response<PresetItem>{
-        return RetrofitInstance.api.getPresetLong()
+    suspend fun getPresent(tourId: Int): Response<PresetItem>{
+        return RetrofitInstance.api.getPresetId(tourId)
     }
 
     suspend fun getItemPlace(number: Int): Response<PlacesItem>{

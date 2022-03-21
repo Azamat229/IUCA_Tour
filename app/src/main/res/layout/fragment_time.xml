@@ -34,12 +34,12 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toTopOf="@+id/but_time1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_short_tour"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/but_time1"
+        android:id="@+id/btn_short_tour"
         android:layout_width="326dp"
         android:layout_height="52dp"
         android:layout_gravity="center_horizontal"
@@ -48,13 +48,13 @@
         android:backgroundTint="@color/stronger_primary"
         android:text="Быстрая (10 минут)"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/btn_time2"
+        app:layout_constraintBottom_toTopOf="@+id/btn_long_tour"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_time2"
+        android:id="@+id/btn_long_tour"
         android:layout_width="326dp"
         android:layout_height="52dp"
         android:layout_gravity="center_horizontal"

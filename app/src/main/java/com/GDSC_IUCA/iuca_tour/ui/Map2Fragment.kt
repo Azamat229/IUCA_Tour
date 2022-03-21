@@ -8,15 +8,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.GDSC_IUCA.iuca_tour.R
-import com.GDSC_IUCA.iuca_tour.ViewModel.MapViewModel
-import com.GDSC_IUCA.iuca_tour.ViewModel.MapViewModelFactory
 import com.GDSC_IUCA.iuca_tour.databinding.FragmentMap2Binding
-import com.GDSC_IUCA.iuca_tour.repository.Repository
-
 
 class Map2Fragment : Fragment() {
     private lateinit var binding: FragmentMap2Binding
@@ -30,7 +24,6 @@ class Map2Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding = FragmentMap2Binding.bind(view)
 
         binding.loseTest.setOnClickListener {

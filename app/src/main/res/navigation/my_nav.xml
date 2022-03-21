@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/openingFragment">
+    app:startDestination="@id/secondFragment">
+
 
     <fragment
         android:id="@+id/secondFragment"
@@ -13,6 +14,11 @@
         <action
             android:id="@+id/action_secondFragment_to_timeFragment"
             app:destination="@id/timeFragment" />
+        <argument
+            android:name="lng"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="ENG" />
     </fragment>
     <fragment
         android:id="@+id/thirdFragment"
@@ -53,19 +59,26 @@
         <action
             android:id="@+id/action_timeFragment_to_startExcurtionFragment"
             app:destination="@id/startExcurtionFragment" />
+        <argument
+            android:name="lng"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="ENG" />
     </fragment>
     <fragment
         android:id="@+id/startExcurtionFragment"
         android:name="com.GDSC_IUCA.iuca_tour.StartExcurtionFragment"
         android:label="Экскурсия"
         tools:layout="@layout/fragment_start_excurtion" >
-        <action
-            android:id="@+id/action_startExcurtionFragment_to_hallFragment"
-            app:destination="@id/hallFragment" />
+        <argument
+            android:name="lng"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="ENG" />
+        <argument
+            android:name="tourDuration"
+            app:argType="integer"
+            android:defaultValue="1" />
     </fragment>
-    <fragment
-        android:id="@+id/hallFragment"
-        android:name="com.GDSC_IUCA.iuca_tour.ui.MapFragment"
-        android:label="Экскурсия"
-        tools:layout="@layout/fragment_hall" />
+
 </navigation>

@@ -4,35 +4,36 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.GDSC_IUCA.iuca_tour.ViewModel.MainViewModel
-import com.GDSC_IUCA.iuca_tour.ViewModel.MainViewModelFactory
 import com.GDSC_IUCA.iuca_tour.databinding.ActivityMainBinding
-import com.GDSC_IUCA.iuca_tour.repository.Repository
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
 
 class MainActivity : AppCompatActivity() {
     lateinit var viewModel: MainViewModel
 
     private lateinit var binding: ActivityMainBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val view = binding.root
+        setContentView(view)
+
         setupNav()
-//        setSupportActionBar(findViewById(R.id.my_toolbar))
         setSupportActionBar(binding.myToolbar)
-
-
+        binding.lngBtnTopBar.setOnClickListener {
+            Log.d("Button", "YES")
+//            Navigation.findNavController(view).navigate(R.id.action_startExcurtionFragment_to_languageFragment)
+//            Navigation.findNavController(view).navigate(R.id.action_timeFragment_to_languageFragment)
+        }
 
         // bottom navigation
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView);
@@ -46,8 +47,6 @@ class MainActivity : AppCompatActivity() {
 
         val config = AppBarConfiguration(navController.graph)
         findViewById<Toolbar>(R.id.my_toolbar).setupWithNavController(navController, config)
-
-
     }
 
     // hide the bottom nav bar
@@ -68,11 +67,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun showBottomNav() {
         binding.bottomNavigationView.visibility = View.VISIBLE
-
     }
 
     private fun hideBottomNav() {
         binding.bottomNavigationView.visibility = View.GONE
-
     }
 }

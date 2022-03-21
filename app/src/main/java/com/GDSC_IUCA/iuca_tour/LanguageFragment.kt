@@ -6,7 +6,7 @@ import android.view.View
 import androidx.navigation.Navigation
 import com.GDSC_IUCA.iuca_tour.databinding.FragmentLanguageBinding
 import androidx.appcompat.app.AppCompatActivity
-
+import androidx.navigation.fragment.findNavController
 
 class LanguageFragment : Fragment(R.layout.fragment_language) {
     private lateinit var binding: FragmentLanguageBinding
@@ -15,10 +15,25 @@ class LanguageFragment : Fragment(R.layout.fragment_language) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentLanguageBinding.bind(view)
 
-//        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+        binding.rusBtn.setOnClickListener {
+            val action = LanguageFragmentDirections.actionLanguageFragmentToSecondFragment("RUS")
+            Navigation.findNavController(view)
+                .navigate(action)
+        }
 
+        binding.engBtn.setOnClickListener {
+            val action = LanguageFragmentDirections.actionLanguageFragmentToSecondFragment("ENG")
+            Navigation.findNavController(view)
+                .navigate(action)
+        }
 
-        binding.thirdButton.setOnClickListener {
+        binding.chBtn.setOnClickListener {
+            val action = LanguageFragmentDirections.actionLanguageFragmentToSecondFragment("CH")
+            Navigation.findNavController(view)
+                .navigate(action)
+        }
+
+        binding.kgBtn.setOnClickListener {
             Navigation.findNavController(view)
                 .navigate(R.id.action_languageFragment_to_secondFragment)
         }

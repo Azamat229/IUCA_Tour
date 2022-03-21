@@ -1,8 +1,6 @@
 package com.GDSC_IUCA.iuca_tour.api
 
-import com.GDSC_IUCA.iuca_tour.models.Places
 import com.GDSC_IUCA.iuca_tour.models.PlacesItem
-import com.GDSC_IUCA.iuca_tour.models.Preset
 import com.GDSC_IUCA.iuca_tour.models.PresetItem
 import retrofit2.Response
 import retrofit2.http.GET
@@ -17,8 +15,9 @@ interface PlaceApi {
 
     ): Response<List<PlacesItem>>
 
-    @GET("api/preset/1") // long preset
-    suspend fun getPresetLong(
+    @GET("api/preset/{tourId}") // long preset
+    suspend fun getPresetId(
+        @Path("tourId") tourId: Int,
     ): Response<PresetItem>
 
     @GET("api/place/{id}")

@@ -2,6 +2,8 @@ package com.GDSC_IUCA.iuca_tour.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
+import android.content.res.ColorStateList
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -18,6 +20,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.GDSC_IUCA.iuca_tour.MainActivity
 import com.GDSC_IUCA.iuca_tour.R
 import com.GDSC_IUCA.iuca_tour.ViewModel.MainViewModel
 import com.GDSC_IUCA.iuca_tour.ViewModel.MainViewModelFactory
@@ -26,8 +29,8 @@ import com.GDSC_IUCA.iuca_tour.repository.Repository
 import com.denzcoskun.imageslider.models.SlideModel
 import java.util.concurrent.TimeUnit
 
-class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
+class MainPageFragment : Fragment(R.layout.fragment_main_page) {
     private lateinit var binding: FragmentMainPageBinding
     private lateinit var layout: ConstraintLayout
     private val constraintSetOld: ConstraintSet = ConstraintSet()
@@ -46,6 +49,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding = FragmentMainPageBinding.bind(view)
 
         // Shared preference
         val sharedPre = this.activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
@@ -58,10 +62,17 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         Log.d("set", chars.toString())
         val idOfPlaces = chars.elementAt(counter!!.toInt())
         var id = idOfPlaces.digitToInt()
-        Log.d("idOfPlace",idOfPlaces.toString())
-        Log.d("counter",counter.toString())
+        var lastElement = chars.last().digitToInt()
 
-        binding = FragmentMainPageBinding.bind(view)
+        if (lastElement == id) {
+            Log.d("Finished", "$lastElement id:$id")
+            binding.nextStationBtn.text = "Finished"
+            binding.nextStationBtn.backgroundTintList =
+                ColorStateList.valueOf(resources.getColor(R.color.green))
+        }
+
+        Log.d("idOfPlace", idOfPlaces.toString())
+        Log.d("counter", counter.toString())
 
         // Retrofit stuff
         val repository = Repository()
@@ -81,7 +92,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
                     //    < - - - - SLIDER IMAGES- - - - >
 
                     val t = it.replace("[]", "")
-                    var t2 = "http://159.89.97.31$t"
+                    val t2 = "http://159.89.97.31$t"
                     imageList.add(SlideModel(t2))
                 }
 
@@ -92,7 +103,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
                 var audio: String = response.body()?.audio.toString()
                 audio = "http://159.89.97.31$audio"
-                Log.d("response MEADI", audio)
+                Log.d("response media", audio)
 
                 // < - - - MEDIA PLAYER - - - >
                 val url = audio
@@ -148,12 +159,13 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
                         }
                         binding.tvPass.text = convertFormat(mediaPlayer.currentPosition)
                     }
+
                     override fun onStartTrackingTouch(p0: SeekBar?) {
                     }
+
                     override fun onStopTrackingTouch(p0: SeekBar?) {
                     }
                 })
-
                 runnable = Runnable {
                     binding.seekBar.progress = mediaPlayer.currentPosition
                     handler.postDelayed(runnable, 500)
@@ -167,16 +179,31 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
             } else {
                 Log.d("response", response.errorBody().toString())
             }
-
         })
         // < - - -  SCROLLING - - - >
         binding.descriptionText.movementMethod = ScrollingMovementMethod()
 
-        //    < - - - ANIMATION  - - - >
+        animation()
+
+        binding.nextStationBtn.setOnClickListener {
+            if (lastElement == id) {
+                Log.d("log", "$lastElement  $id")
+                // delete all data from shared pref
+                val intent = Intent(activity, MainActivity::class.java)
+                activity?.startActivity(intent)
+            } else {
+                Log.d("log2", "$lastElement $id")
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_mainPageFragment_to_testFragment)
+            }
+        }
+    }
+
+    private fun animation() {
+//    < - - - ANIMATION  - - - >
         layout = binding.layout
         constraintSetOld.clone(layout)
         constraintSetNew.clone(activity, R.layout.fragment_main_page_alt)
-
 
         binding.expandCollabseBtn.setOnClickListener {
 
@@ -192,11 +219,6 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
                 constraintSetOld.applyTo(layout)
                 false
             }
-        }
-
-        binding.nextStationBtn.setOnClickListener {
-            Navigation.findNavController(view)
-                .navigate(R.id.action_mainPageFragment_to_testFragment)
         }
     }
 

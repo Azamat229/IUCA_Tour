@@ -16,11 +16,10 @@
     <com.denzcoskun.imageslider.ImageSlider
         android:id="@+id/image_slider"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:padding="0dp"
-        android:layout_margin="0dp"
+        android:layout_height="294.5dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
+
         app:iss_corner_radius="5"
         app:iss_delay="0"
         app:iss_error_image="@drawable/error"
@@ -37,6 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:background="@color/primary"
+        app:layout_constraintTop_toBottomOf="@+id/image_slider"
         app:layout_constraintBottom_toTopOf="@+id/mainTextBoxLinear"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -117,6 +117,7 @@
         android:layout_marginBottom="80dp"
         android:background="@color/white"
         android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -126,6 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+
             android:layout_marginBottom="20dp">
 
             <TextView

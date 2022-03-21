@@ -11,10 +11,10 @@
 
 
     <Button
-        android:id="@+id/firstButton"
+        android:id="@+id/engBtn"
         android:layout_width="328dp"
         android:layout_height="52dp"
-        android:layout_marginTop="264dp"
+        android:layout_marginTop="184dp"
         android:background="@drawable/shape_for_button"
         android:backgroundTint="@color/white"
         android:drawableLeft="@drawable/flag_us_little"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
-        android:id="@+id/secondButton"
+        android:id="@+id/kgBtn"
         android:paddingStart="28dp"
         android:paddingEnd="28dp"
         android:backgroundTint="@color/white"
@@ -41,7 +41,7 @@
         android:layout_width="328dp"
         android:background="@drawable/shape_for_button"
         android:layout_height="52dp"
-        android:layout_below="@id/firstButton"
+        android:layout_below="@id/engBtn"
         android:layout_marginTop="16dp"
 
         android:drawableStart="@drawable/flag_kg_little"
@@ -50,18 +50,18 @@
         android:text="Кыргыз тили"
         android:textColor="@color/black"
 
-        app:layout_constraintTop_toBottomOf="@+id/firstButton"
+        app:layout_constraintTop_toBottomOf="@+id/engBtn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         />
 
     <Button
-        android:id="@+id/thirdButton"
+        android:id="@+id/rusBtn"
         android:paddingEnd="28dp"
         android:paddingStart="28dp"
         android:layout_width="328dp"
         android:layout_height="52dp"
-        android:layout_below="@id/secondButton"
+        android:layout_below="@id/kgBtn"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_medium"
         android:drawableStart="@drawable/flag_ru_little"
@@ -70,19 +70,18 @@
         android:background="@drawable/shape_for_button"
         android:backgroundTint="@color/white"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/secondButton"
+        app:layout_constraintTop_toBottomOf="@+id/kgBtn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-
         />
 
     <Button
-
+        android:id="@+id/chBtn"
         android:layout_width="328dp"
         android:layout_height="52dp"
         android:paddingStart="28dp"
         android:paddingEnd="28dp"
-        android:layout_below="@id/thirdButton"
+        android:layout_below="@id/rusBtn"
         android:layout_marginTop="15dp"
         android:drawableStart="@drawable/flag_ch_little"
         android:drawableEnd="@drawable/ic_arrow"
@@ -91,7 +90,7 @@
         android:backgroundTint="@color/white"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/thirdButton"
+        app:layout_constraintTop_toBottomOf="@+id/rusBtn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
 
