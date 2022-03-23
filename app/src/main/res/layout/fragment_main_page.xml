@@ -19,8 +19,6 @@
         android:layout_height="294.5dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-
-        app:iss_corner_radius="5"
         app:iss_delay="0"
         app:iss_error_image="@drawable/error"
         app:iss_period="3000"

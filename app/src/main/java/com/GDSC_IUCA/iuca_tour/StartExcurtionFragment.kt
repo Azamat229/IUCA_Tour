@@ -17,7 +17,6 @@ import com.GDSC_IUCA.iuca_tour.models.PlacesItem
 import com.GDSC_IUCA.iuca_tour.models.PresetItem
 import com.GDSC_IUCA.iuca_tour.repository.Repository
 import com.GDSC_IUCA.iuca_tour.ui.MainPageActivity
-import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import retrofit2.Response
 import kotlin.properties.Delegates
@@ -38,11 +37,12 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
     private  var listOfPlaceImages = ArrayList<PlacesItem>()
 
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentStartExcurtionBinding.bind(view)
 
-//        Log.d("Arg", args.lng.toString())
+
         // Retrofit code
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
@@ -50,91 +50,85 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
         viewModel.getPreset(args.tourDuration)
 
 
-//        Log.d("tourDurationID", args.tourDuration.toString())
-
         viewModel.myResponsePreset.observe(viewLifecycleOwner, Observer { response ->
 
             if (response.isSuccessful) {
                 list = convertMupToList(response)
                 Log.d("PLACE LIST", list.toString())
 
+
+                listOfPlaceNames = ArrayList()
+                listOfPlaceImages = ArrayList()
+                val repository1 = Repository()
+                val viewModelFactory1 = MainViewModelFactory(repository1)
+                viewModel1 = ViewModelProvider(this, viewModelFactory1).get(MainViewModel::class.java)
+
+                // Shared preference
+                val sharedPre = this.activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
+
+                val str = sharedPre?.getString("setOrderedPlaces", null)
+                if (str != null) {
+                    Log.d("Set oder places", str)
+                } else {
+                    Log.d("Set order", 1.toString())}
+                val chars: List<Char> = str!!.toList()
+
+
+                viewModel1.getPlace()
+                viewModel1.myResponse.observe(viewLifecycleOwner, Observer { res ->
+                    if (res.isSuccessful) {
+                        chars.forEach {
+                            listOfPlaceNames.add(res.body()!![it.digitToInt()-1].name)
+                            listOfPlaceImages.add(res.body()!![it.digitToInt()-1])
+                        }
+                    }else Log.d("RESPONSE ERROR", res.errorBody().toString())
+
+                    Log.d("COMPLETED NAME's LIST", listOfPlaceNames.toString())
+                    Log.d("COMPLETED IMAGE's LIST", listOfPlaceImages.toString())
+
+                    // Simple adapter
+                    val data = (0 until listOfPlaceNames.size).map {
+
+                        Log.d("LIST SIZE", listOfPlaceNames[it])
+
+                        mapOf(
+                            KEY_TITLE to "${it+1}. ${listOfPlaceNames.get(it)}"
+                        )
+                    }
+                    val adapter = SimpleAdapter(
+                        context,
+                        data,
+                        R.layout.item_custem,
+                        arrayOf(KEY_TITLE),
+                        intArrayOf(R.id.tv_title)
+                    )
+                    binding.listView.adapter = adapter
+                    // Slider code
+                    var imageList = ArrayList<SlideModel>() // Create image list
+
+                    listOfPlaceImages.forEach {
+                        //    < - - - - SLIDER IMAGES- - - - >
+
+                        val t = it.images.get(0)
+                        Log.d("IMAGE",t.toString())
+
+                        val t2 = "http://159.89.97.31$t"
+                        Log.d("IMAGES",t2)
+
+                        imageList.add(SlideModel(t2))
+
+                    }
+
+                    val imageS = binding.imageSlider
+                    imageS.setImageList(imageList)
+                })
+
+
             } else Log.d("RESPONSE ERROR", response.errorBody().toString())
-
         })
 
 
 
-
-        listOfPlaceNames = ArrayList()
-        listOfPlaceImages = ArrayList()
-        val repository1 = Repository()
-        val viewModelFactory1 = MainViewModelFactory(repository1)
-        viewModel1 = ViewModelProvider(this, viewModelFactory1).get(MainViewModel::class.java)
-
-
-        // Shared preference
-        val sharedPre = this.activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
-
-        val str = sharedPre?.getString("setOrderedPlaces", null)
-        val chars: List<Char> = str!!.toList()
-
-
-
-        viewModel1.getPlace()
-        viewModel1.myResponse.observe(viewLifecycleOwner, Observer { res ->
-            if (res.isSuccessful) {
-                chars.forEach {
-                    listOfPlaceNames.add(res.body()!![it.digitToInt()-1].name)
-                    listOfPlaceImages.add(res.body()!![it.digitToInt()-1])
-                }
-            }else Log.d("RESPONSE ERROR", res.errorBody().toString())
-
-            Log.d("COMPLETED NAME's LIST", listOfPlaceNames.toString())
-            Log.d("COMPLETED IMAGE's LIST", listOfPlaceImages.toString())
-
-            // Simple adapter
-            val data = (0 until listOfPlaceNames.size).map {
-
-                Log.d("LIST SIZE", listOfPlaceNames[it])
-
-                mapOf(
-                    KEY_TITLE to "${it+1}. ${listOfPlaceNames.get(it)}"
-                )
-            }
-            val adapter = SimpleAdapter(
-                context,
-                data,
-                R.layout.item_custem,
-                arrayOf(KEY_TITLE),
-                intArrayOf(R.id.tv_title)
-            )
-            binding.listView.adapter = adapter
-            // Slider code
-            var imageList = ArrayList<SlideModel>() // Create image list
-
-            listOfPlaceImages.forEach {
-                //    < - - - - SLIDER IMAGES- - - - >
-
-                val t = it.images.get(0)
-                Log.d("IMAGE",t.toString())
-
-                val t2 = "http://159.89.97.31$t"
-                Log.d("IMAGES",t2)
-
-                imageList.add(SlideModel(t2))
-
-            }
-
-//            imageList = ArrayList<SlideModel>() // Create image list
-//            imageList.add(SlideModel(R.drawable.slider, ScaleTypes.FIT))
-//            imageList.add(SlideModel(R.drawable.slider, ScaleTypes.FIT))
-//            imageList.add(SlideModel(R.drawable.slider, ScaleTypes.FIT))
-//            imageList.add(SlideModel(R.drawable.slider, ScaleTypes.FIT))
-//            imageList.add(SlideModel(R.drawable.slider, ScaleTypes.FIT))
-
-            val imageS = binding.imageSlider
-            imageS.setImageList(imageList)
-        })
 
 
         // Navigation code
@@ -142,8 +136,6 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
             val intent = Intent(activity, MainPageActivity::class.java)
             activity?.startActivity(intent)
         }
-
-
     }
 
 
@@ -161,13 +153,11 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
 
         saveListSharePref(orderIdOfPlaces)
         return orderIdOfPlaces
-
     }
 
 
     private fun saveListSharePref(orderIdOfPlaces: ArrayList<String>) {
         val orderIdOfPlacesStr = orderIdOfPlaces.joinToString("")
-//        Log.d("JoinToString", orderIdOfPlacesStr)
 
         val sharedPre = this.activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
         val editor = sharedPre?.edit()

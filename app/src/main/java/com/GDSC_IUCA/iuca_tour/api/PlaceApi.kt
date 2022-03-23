@@ -27,6 +27,4 @@ interface PlaceApi {
     language: String = "ENG"
 
     ): Response<PlacesItem>
-
-
 }

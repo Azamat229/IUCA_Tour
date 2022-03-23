@@ -12,19 +12,24 @@ class TimeFragment : Fragment(R.layout.fragment_time) {
     private lateinit var binding: FragmentTimeBinding
     private val args: TimeFragmentArgs by navArgs()
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentTimeBinding.bind(view)
         val lng = args.lng
 
+
         binding.btnShortTour.setOnClickListener {
             val action = TimeFragmentDirections.actionTimeFragmentToStartExcurtionFragment("ENG",2)
             Navigation.findNavController(view).navigate(action)
+
         }
 
         binding.btnLongTour.setOnClickListener {
             val action = TimeFragmentDirections.actionTimeFragmentToStartExcurtionFragment("ENG",1)
             Navigation.findNavController(view).navigate(action)
+
+
         }
     }
 }
