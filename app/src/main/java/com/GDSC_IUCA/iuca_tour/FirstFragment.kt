@@ -26,9 +26,6 @@ class FirstFragment : Fragment() {
         // Slider ...
         val imageList = ArrayList<SlideModel>() // Create image list
 
-        // imageList.add(SlideModel("String Url" or R.drawable)
-        // imageList.add(SlideModel("String Url" or R.drawable, "title") You can add title
-
         imageList.add(SlideModel(R.drawable.slider, ScaleTypes.FIT))
         imageList.add(SlideModel(R.drawable.slider, ScaleTypes.FIT))
         imageList.add(SlideModel(R.drawable.slider, ScaleTypes.FIT))

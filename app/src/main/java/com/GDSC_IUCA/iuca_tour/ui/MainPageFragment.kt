@@ -149,6 +149,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
                         binding.playBtn.setImageResource(R.drawable.ic_stop)
                     } else {
                         mediaPlayer.pause()
+                        mediaPlayer.stop()
                         binding.playBtn.setImageResource(R.drawable.ic_play_btn_6)
                     }
                 }
@@ -221,6 +222,14 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
                     .navigate(R.id.action_mainPageFragment_to_testFragment)
             }
         }
+    }
+
+    override fun onDestroyView() {
+        Log.d("Fragment1", "onDestroyView")
+        mediaPlayer.stop()
+
+
+        super.onDestroyView()
     }
 
     private fun animation() {

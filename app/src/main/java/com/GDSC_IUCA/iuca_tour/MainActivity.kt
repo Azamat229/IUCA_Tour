@@ -16,7 +16,6 @@ import com.GDSC_IUCA.iuca_tour.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    lateinit var viewModel: MainViewModel
 
     private lateinit var binding: ActivityMainBinding
 
@@ -24,23 +23,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val view = binding.root
-        setContentView(view)
+
+//        val view = binding.root
+//
+//        setContentView(view)
 
         setupNav()
         setSupportActionBar(binding.myToolbar)
-        binding.lngBtnTopBar.setOnClickListener {
-            Log.d("Button", "YES")
-//            Navigation.findNavController(view).navigate(R.id.action_startExcurtionFragment_to_languageFragment)
-//            Navigation.findNavController(view).navigate(R.id.action_timeFragment_to_languageFragment)
-        }
+
 
         // bottom navigation
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val navController = findNavController(R.id.fragmentContainerView)
 
-        val appBarConfiguration =
-            AppBarConfiguration(setOf(R.id.firstFragment, R.id.secondFragment, R.id.thirdFragment))
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.firstFragment, R.id.secondFragment, R.id.thirdFragment))
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         bottomNavigationView.setupWithNavController(navController)
