@@ -1,6 +1,5 @@
 package com.GDSC_IUCA.iuca_tour
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -19,11 +18,7 @@ class OpeningFragment : Fragment(R.layout.fragment_opening) {
                 .navigate(R.id.action_openingFragment_to_languageFragment)
         }
 
-
         binding.textView11.setOnClickListener {
-//            val intent = Intent (activity, MainPageActivity::class.java)
-//            activity?.startActivity(intent)
-
             Navigation.findNavController(view)
                 .navigate(R.id.action_openingFragment_to_startExcurtionFragment)
         }

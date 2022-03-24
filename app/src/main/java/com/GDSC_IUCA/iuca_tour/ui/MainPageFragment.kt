@@ -26,7 +26,6 @@ import com.GDSC_IUCA.iuca_tour.R
 import com.GDSC_IUCA.iuca_tour.ViewModel.MainViewModel
 import com.GDSC_IUCA.iuca_tour.ViewModel.MainViewModelFactory
 import com.GDSC_IUCA.iuca_tour.adapter.ListBaseAdapter
-import com.GDSC_IUCA.iuca_tour.databinding.ActivityMainPageBinding
 import com.GDSC_IUCA.iuca_tour.databinding.FragmentMainPageBinding
 import com.GDSC_IUCA.iuca_tour.repository.Repository
 import com.denzcoskun.imageslider.models.SlideModel
@@ -55,9 +54,6 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMainPageBinding.bind(view)
-
-
-
 
 
         // Shared preference
@@ -96,10 +92,9 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
                 val namesOrderedPlaces: ArrayList<String> = ArrayList()
 
                 listOrderedPlaces.forEach {
-                    namesOrderedPlaces.add(res.body()!![it.digitToInt()-1].name)
+                    namesOrderedPlaces.add(res.body()!![it.digitToInt() - 1].name)
                     Log.d("NAMES", namesOrderedPlaces.toString())
                 }
-
 
                 adapter = ListBaseAdapter(res.body()!!, namesOrderedPlaces, counter)
                 requireActivity().findViewById<ListView>(R.id.activity_list_view).adapter = adapter

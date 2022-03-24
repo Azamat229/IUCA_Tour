@@ -6,7 +6,6 @@ import android.view.View
 import androidx.navigation.Navigation
 import com.GDSC_IUCA.iuca_tour.databinding.FragmentLanguageBinding
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.fragment.findNavController
 
 class LanguageFragment : Fragment(R.layout.fragment_language) {
     private lateinit var binding: FragmentLanguageBinding

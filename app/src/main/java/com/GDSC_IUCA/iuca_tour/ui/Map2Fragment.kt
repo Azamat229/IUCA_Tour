@@ -33,15 +33,16 @@ class Map2Fragment : Fragment() {
 
         saveCountData()
         binding.nextStationBtn.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_testFragment_to_mainPageFragment)
+            Navigation.findNavController(view)
+                .navigate(R.id.action_testFragment_to_mainPageFragment)
         }
     }
 
-    private fun saveCountData () {
+    private fun saveCountData() {
 
         val sharedPre = this.activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
         val editor = sharedPre?.edit()
-        var counter = sharedPre?.getInt("counter",0)
+        var counter = sharedPre?.getInt("counter", 0)
 
         Log.d("Counter", counter.toString())
 

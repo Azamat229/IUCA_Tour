@@ -2,16 +2,12 @@ package com.GDSC_IUCA.iuca_tour
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.GDSC_IUCA.iuca_tour.ViewModel.MainViewModel
 import com.GDSC_IUCA.iuca_tour.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -25,12 +21,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 //        val view = binding.root
-//
 //        setContentView(view)
 
         setupNav()
         setSupportActionBar(binding.myToolbar)
-
+        binding.lngBtnTopBar.setOnClickListener {
+            binding.lngBtnTopBar.setImageResource(R.drawable.flag_ch)
+        }
 
         // bottom navigation
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)

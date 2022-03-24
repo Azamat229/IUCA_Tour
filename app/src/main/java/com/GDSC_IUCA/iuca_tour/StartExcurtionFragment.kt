@@ -34,14 +34,11 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
 
     private lateinit var list: ArrayList<String>
     private lateinit var listOfPlaceNames: ArrayList<String>
-    private  var listOfPlaceImages = ArrayList<PlacesItem>()
-
-
+    private var listOfPlaceImages = ArrayList<PlacesItem>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentStartExcurtionBinding.bind(view)
-
 
         // Retrofit code
         val repository = Repository()
@@ -49,19 +46,18 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         viewModel.getPreset(args.tourDuration)
 
-
         viewModel.myResponsePreset.observe(viewLifecycleOwner, Observer { response ->
 
             if (response.isSuccessful) {
                 list = convertMupToList(response)
                 Log.d("PLACE LIST", list.toString())
 
-
                 listOfPlaceNames = ArrayList()
                 listOfPlaceImages = ArrayList()
                 val repository1 = Repository()
                 val viewModelFactory1 = MainViewModelFactory(repository1)
-                viewModel1 = ViewModelProvider(this, viewModelFactory1).get(MainViewModel::class.java)
+                viewModel1 =
+                    ViewModelProvider(this, viewModelFactory1).get(MainViewModel::class.java)
 
                 // Shared preference
                 val sharedPre = this.activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
@@ -70,7 +66,8 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
                 if (str != null) {
                     Log.d("Set oder places", str)
                 } else {
-                    Log.d("Set order", 1.toString())}
+                    Log.d("Set order", 1.toString())
+                }
                 val chars: List<Char> = str!!.toList()
 
 
@@ -78,12 +75,11 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
                 viewModel1.myResponse.observe(viewLifecycleOwner, Observer { res ->
                     if (res.isSuccessful) {
                         chars.forEach {
-                            listOfPlaceNames.add(res.body()!![it.digitToInt()-1].name)
-                            listOfPlaceImages.add(res.body()!![it.digitToInt()-1])
+                            listOfPlaceNames.add(res.body()!![it.digitToInt() - 1].name)
+                            listOfPlaceImages.add(res.body()!![it.digitToInt() - 1])
                         }
-                    }else Log.d("RESPONSE ERROR", res.errorBody().toString())
+                    } else Log.d("RESPONSE ERROR", res.errorBody().toString())
 
-//                    Log.d("COMPLETED NAME's LIST", listOfPlaceNames.toString())
 
                     // Simple adapter
                     val data = (0 until listOfPlaceNames.size).map {
@@ -91,7 +87,7 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
                         Log.d("LIST SIZE", listOfPlaceNames[it])
 
                         mapOf(
-                            KEY_TITLE to "${it+1}. ${listOfPlaceNames.get(it)}"
+                            KEY_TITLE to "${it + 1}. ${listOfPlaceNames.get(it)}"
                         )
                     }
                     val adapter = SimpleAdapter(
@@ -109,25 +105,20 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
                         //    < - - - - SLIDER IMAGES- - - - >
 
                         val t = it.images.get(0)
-                        Log.d("IMAGE",t.toString())
+                        Log.d("IMAGE", t.toString())
 
                         val t2 = "http://159.89.97.31$t"
-                        Log.d("IMAGES",t2)
+                        Log.d("IMAGES", t2)
 
                         imageList.add(SlideModel(t2))
-
                     }
 
                     val imageS = binding.imageSlider
                     imageS.setImageList(imageList)
                 })
 
-
             } else Log.d("RESPONSE ERROR", response.errorBody().toString())
         })
-
-
-
 
 
         // Navigation code

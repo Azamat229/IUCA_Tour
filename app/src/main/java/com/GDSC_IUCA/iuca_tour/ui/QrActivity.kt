@@ -7,8 +7,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.navigation.Navigation
-import com.GDSC_IUCA.iuca_tour.R
 import com.GDSC_IUCA.iuca_tour.databinding.ActivityQrBinding
 import com.budiyev.android.codescanner.AutoFocusMode
 import com.budiyev.android.codescanner.CodeScanner
@@ -39,7 +37,6 @@ class QrActivity : AppCompatActivity() {
         } else {
             startScanning()
         }
-
     }
 
     private fun startScanning() {
@@ -57,10 +54,7 @@ class QrActivity : AppCompatActivity() {
         // Callbacks
         codeScanner.decodeCallback = DecodeCallback {
             runOnUiThread {
-
-
                 Toast.makeText(this, "ОТКРЫТЬ КАРТУ", Toast.LENGTH_LONG).show()
-
             }
         }
         codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS

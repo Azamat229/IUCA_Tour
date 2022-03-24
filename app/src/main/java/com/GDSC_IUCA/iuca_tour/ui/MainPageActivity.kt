@@ -2,7 +2,6 @@ package com.GDSC_IUCA.iuca_tour.ui
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
-
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -11,9 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.GDSC_IUCA.iuca_tour.R
 import com.GDSC_IUCA.iuca_tour.databinding.ActivityMainPageBinding
-
 import com.google.android.material.navigation.NavigationView
-
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
