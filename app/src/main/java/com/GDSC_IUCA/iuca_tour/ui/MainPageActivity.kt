@@ -16,16 +16,34 @@ import com.budiyev.android.codescanner.CodeScanner
 import com.google.android.material.navigation.NavigationView
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.SimpleAdapter
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.GDSC_IUCA.iuca_tour.MainActivity
+import com.GDSC_IUCA.iuca_tour.StartExcurtionFragment
+import com.GDSC_IUCA.iuca_tour.ViewModel.ActivityViewModel
+import com.GDSC_IUCA.iuca_tour.adapter.ListBaseAdapter
+import com.GDSC_IUCA.iuca_tour.models.PlacesItem
+import kotlin.system.exitProcess
 
 class MainPageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainPageBinding
+    private lateinit var listOfPlaceNames: ArrayList<String>
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var codeScanner: CodeScanner
+    private lateinit var adapter: ListBaseAdapter
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainPageBinding.inflate(layoutInflater)
 
+        binding.btnExit.setOnClickListener {
+            finishAffinity()
+
+        }
         setContentView(binding.root)
         setSupportActionBar(binding.appBarMain.toolbar)
         val drawerLayout: DrawerLayout = binding.drawerLayout
@@ -43,9 +61,28 @@ class MainPageActivity : AppCompatActivity() {
 
         navView.setupWithNavController(navController)
 
-        val sharedPreference =  getSharedPreferences("PREFERENCE_NAME", Context.MODE_PRIVATE)
+        val sharedPreference = getSharedPreferences("PREFERENCE_NAME", Context.MODE_PRIVATE)
 
+
+
+        listOfPlaceNames = ArrayList()
+
+
+//        // Shared preference
+        val sharedPre = this.getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val counter = sharedPre?.getInt("counter", 0)
+        val setOrderedPlaces = sharedPre?.getString("setOrderedPlaces", null)
+        val listOrderedPlaces: List<Char> = setOrderedPlaces!!.toList()
+        val idOfCurrentPlace = listOrderedPlaces.elementAt(counter!!.toInt())
+
+        Log.d("ID OF CUR PLACE", idOfCurrentPlace.toString())
+        Log.d("LIST OF PLACE", listOrderedPlaces.toString())
+
+        val viewModel = ViewModelProvider(this).get(ActivityViewModel::class.java)
+        viewModel.getPost1()
     }
+
+
 
     override fun onSupportNavigateUp(): Boolean {
 

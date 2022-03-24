@@ -21,11 +21,6 @@ class HeaderAdapter : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
     }
 
 
-
-    override fun onViewRecycled(holder: HeaderAdapter.HeaderViewHolder) {
-        super.onViewRecycled(holder)
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeaderAdapter.HeaderViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_nav_header, parent, false)
         return HeaderViewHolder(view)

@@ -13,6 +13,7 @@ import android.transition.*
 import android.util.Log
 import android.view.View
 import android.view.animation.OvershootInterpolator
+import android.widget.ListView
 import android.widget.SeekBar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
@@ -24,6 +25,8 @@ import com.GDSC_IUCA.iuca_tour.MainActivity
 import com.GDSC_IUCA.iuca_tour.R
 import com.GDSC_IUCA.iuca_tour.ViewModel.MainViewModel
 import com.GDSC_IUCA.iuca_tour.ViewModel.MainViewModelFactory
+import com.GDSC_IUCA.iuca_tour.adapter.ListBaseAdapter
+import com.GDSC_IUCA.iuca_tour.databinding.ActivityMainPageBinding
 import com.GDSC_IUCA.iuca_tour.databinding.FragmentMainPageBinding
 import com.GDSC_IUCA.iuca_tour.repository.Repository
 import com.denzcoskun.imageslider.models.SlideModel
@@ -36,6 +39,8 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
     private val constraintSetOld: ConstraintSet = ConstraintSet()
     private val constraintSetNew: ConstraintSet = ConstraintSet()
     private var altLayout = false
+
+    private lateinit var adapter: ListBaseAdapter
 
     // Retrofit code
     lateinit var viewModel: MainViewModel
@@ -51,37 +56,56 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMainPageBinding.bind(view)
 
+
+
+
+
         // Shared preference
         val sharedPre = this.activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
 
         val counter = sharedPre?.getInt("counter", 0)
-        val str = sharedPre?.getString("setOrderedPlaces", null)
+        val setOrderedPlaces = sharedPre?.getString("setOrderedPlaces", null)
 
-        val chars: List<Char> = str!!.toList()
+        val listOrderedPlaces: List<Char> = setOrderedPlaces!!.toList() // ordered list of places
 
-        Log.d("set", chars.toString())
-        val idOfPlaces = chars.elementAt(counter!!.toInt())
-        var id = idOfPlaces.digitToInt()
-        var lastElement = chars.last().digitToInt()
+        val idOfCurrPlaceChar = listOrderedPlaces.elementAt(counter!!.toInt())
+        var idCurrPlace = idOfCurrPlaceChar.digitToInt() // id of current place
 
-        if (lastElement == id) {
-            Log.d("Finished", "$lastElement id:$id")
+        var lastElement = listOrderedPlaces.last().digitToInt() // green color
+        if (lastElement == idCurrPlace) {
+//            Log.d("Finished", "$lastElement id:$idCurrPlace")
             binding.nextStationBtn.text = "Finished"
             binding.nextStationBtn.backgroundTintList =
                 ColorStateList.valueOf(resources.getColor(R.color.green))
         }
 
-        Log.d("idOfPlace", idOfPlaces.toString())
+        Log.d("idOfPlace", idOfCurrPlaceChar.toString())
         Log.d("counter", counter.toString())
+
 
         // Retrofit stuff
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
-        viewModel.getItemPlace(id)
+        viewModel.getItemPlace(idCurrPlace)
+        viewModel.getPlace()
 
         viewModel.myResponseItem.observe(viewLifecycleOwner, Observer { response ->
+            viewModel.myResponse.observe(viewLifecycleOwner, Observer { res ->
+                val namesOrderedPlaces: ArrayList<String> = ArrayList()
+
+                listOrderedPlaces.forEach {
+                    namesOrderedPlaces.add(res.body()!![it.digitToInt()-1].name)
+                    Log.d("NAMES", namesOrderedPlaces.toString())
+                }
+
+
+                adapter = ListBaseAdapter(res.body()!!, namesOrderedPlaces, counter)
+                requireActivity().findViewById<ListView>(R.id.activity_list_view).adapter = adapter
+
+            })
+
 
             if (response.isSuccessful) {
                 binding.titlePlace.text = response.body()?.name
@@ -186,7 +210,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         animation()
 
         binding.nextStationBtn.setOnClickListener {
-            if (lastElement == id) {
+            if (lastElement == idCurrPlace) {
                 Log.d("log", "$lastElement  $id")
                 // delete all data from shared pref
                 val intent = Intent(activity, MainActivity::class.java)

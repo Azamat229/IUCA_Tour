@@ -14,12 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IUCA_Tour"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".recycler.TestActivity"
-            android:exported="false" />
-        <activity
-            android:name=".recycler.RecyclerActivity"
-            android:exported="false" />
+
+
         <activity
             android:name=".ui.QrActivity"
             android:exported="false" />
@@ -28,9 +24,7 @@
             android:exported="false"
             android:label="@string/title_activity_main_page"
             android:theme="@style/Theme.IUCA_Tour.NoActionBar" />
-        <activity
-            android:name=".NavHeaderActivity"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

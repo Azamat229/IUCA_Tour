@@ -163,6 +163,7 @@
     </LinearLayout>
 
     <Button
+
         android:id="@+id/next_station_btn"
         android:layout_width="340dp"
         android:layout_height="52dp"

@@ -15,6 +15,15 @@ interface PlaceApi {
 
     ): Response<List<PlacesItem>>
 
+    @GET("api/place/")
+    suspend fun getPlaces1(
+        @Query("lang")
+        language: String = "ENG"
+
+    ): Response<List<PlacesItem>>
+
+
+
     @GET("api/preset/{tourId}") // long preset
     suspend fun getPresetId(
         @Path("tourId") tourId: Int,

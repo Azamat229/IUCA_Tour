@@ -20,3 +20,13 @@ object RetrofitInstance {
         retrofit.create(PlaceApi::class.java)
     }
 }
+object UserNetwork {
+
+    val retrofit1 by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(PlaceApi::class.java)
+    }
+}

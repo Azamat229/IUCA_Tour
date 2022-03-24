@@ -83,8 +83,7 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
                         }
                     }else Log.d("RESPONSE ERROR", res.errorBody().toString())
 
-                    Log.d("COMPLETED NAME's LIST", listOfPlaceNames.toString())
-                    Log.d("COMPLETED IMAGE's LIST", listOfPlaceImages.toString())
+//                    Log.d("COMPLETED NAME's LIST", listOfPlaceNames.toString())
 
                     // Simple adapter
                     val data = (0 until listOfPlaceNames.size).map {

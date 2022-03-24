@@ -78,7 +78,7 @@ class NavHeaderFragment : Fragment(R.layout.fragment_nav_header) {
                 intArrayOf(R.id.tv_title)
             )
 
-            binding.listView.adapter = adapter
+//            binding.listView.adapter = adapter
             // Slider code
             var imageList = ArrayList<SlideModel>() // Create image list
 
