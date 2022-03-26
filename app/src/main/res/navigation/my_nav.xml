@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/secondFragment">
+    app:startDestination="@id/openingFragment">
 
 
     <fragment
@@ -49,7 +49,8 @@
         tools:layout="@layout/fragment_language" >
         <action
             android:id="@+id/action_languageFragment_to_secondFragment"
-            app:destination="@id/secondFragment" />
+            app:destination="@id/secondFragment"
+            app:popUpTo="@id/languageFragment"/>
     </fragment>
     <fragment
         android:id="@+id/timeFragment"

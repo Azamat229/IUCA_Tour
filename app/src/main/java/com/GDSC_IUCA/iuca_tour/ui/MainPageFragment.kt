@@ -222,8 +222,6 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
     override fun onDestroyView() {
         Log.d("Fragment1", "onDestroyView")
         mediaPlayer.stop()
-
-
         super.onDestroyView()
     }
 

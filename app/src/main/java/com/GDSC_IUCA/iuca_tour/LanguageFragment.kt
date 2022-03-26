@@ -1,15 +1,18 @@
 package com.GDSC_IUCA.iuca_tour
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.GDSC_IUCA.iuca_tour.databinding.FragmentLanguageBinding
-import androidx.appcompat.app.AppCompatActivity
+
 
 class LanguageFragment : Fragment(R.layout.fragment_language) {
     private lateinit var binding: FragmentLanguageBinding
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentLanguageBinding.bind(view)

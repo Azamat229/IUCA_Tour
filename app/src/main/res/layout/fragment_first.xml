@@ -12,7 +12,6 @@
         android:id="@+id/image_slider"
         android:layout_width="match_parent"
         android:layout_height="280dp"
-        android:layout_marginTop="56dp"
         app:iss_auto_cycle="true"
         app:iss_corner_radius="5"
         app:iss_delay="0"

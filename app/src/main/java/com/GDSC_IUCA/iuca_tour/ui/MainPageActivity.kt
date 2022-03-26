@@ -13,6 +13,7 @@ import com.GDSC_IUCA.iuca_tour.databinding.ActivityMainPageBinding
 import com.google.android.material.navigation.NavigationView
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import com.GDSC_IUCA.iuca_tour.ViewModel.ActivityViewModel
 
@@ -27,7 +28,9 @@ class MainPageActivity : AppCompatActivity() {
         binding = ActivityMainPageBinding.inflate(layoutInflater)
 
         binding.btnExit.setOnClickListener {
-            finishAffinity()
+            var dialog = CustomDialogFragment()
+            dialog.show(supportFragmentManager, "customDialog")
+
         }
 
         setContentView(binding.root)

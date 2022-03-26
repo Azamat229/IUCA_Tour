@@ -1,15 +1,20 @@
 package com.GDSC_IUCA.iuca_tour
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.GDSC_IUCA.iuca_tour.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,15 +30,32 @@ class MainActivity : AppCompatActivity() {
 
         setupNav()
         setSupportActionBar(binding.myToolbar)
+
+
         binding.lngBtnTopBar.setOnClickListener {
             binding.lngBtnTopBar.setImageResource(R.drawable.flag_ch)
+            val fragmentManager: FragmentManager = supportFragmentManager
+            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+            val languageFragment = LanChoseFragment()
+
+//            val bundle = Bundle()
+//            bundle.putString("message", "Hello")
+//            languageFragment.arguments = bundle
+            fragmentTransaction.add(R.id.fragmentContainerView,languageFragment).commit()
+
         }
 
         // bottom navigation
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val navController = findNavController(R.id.fragmentContainerView)
 
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.firstFragment, R.id.secondFragment, R.id.thirdFragment))
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+            R.id.firstFragment,
+            R.id.secondFragment,
+            R.id.thirdFragment)
+        )
+
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         bottomNavigationView.setupWithNavController(navController)

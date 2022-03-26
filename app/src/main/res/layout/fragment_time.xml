@@ -10,15 +10,26 @@
     tools:context=".TimeFragment">
 
 
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/background_shape"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="1.0" />
+
+
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="266dp"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_image_time"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+        android:background="@drawable/time_frag_background3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,28 +37,29 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="112dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/roboto_medium"
         android:gravity="center_horizontal"
         android:lines="3"
         android:text="@string/начало"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@+id/btn_short_tour"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/btn_short_tour"
         android:layout_width="326dp"
         android:layout_height="52dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/shape_for_button"
-        android:backgroundTint="@color/stronger_primary"
         android:text="Быстрая (10 минут)"
-        android:textColor="@color/white"
+        android:textColor="@color/primary"
         app:layout_constraintBottom_toTopOf="@+id/btn_long_tour"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
@@ -58,11 +70,10 @@
         android:layout_width="326dp"
         android:layout_height="52dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/shape_for_button"
-        android:backgroundTint="@color/stronger_primary"
         android:text="Подробная (30 минут)"
-        android:textColor="@color/white"
+        android:textColor="@color/primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
