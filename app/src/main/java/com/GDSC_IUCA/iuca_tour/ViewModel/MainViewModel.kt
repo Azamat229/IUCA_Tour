@@ -15,9 +15,9 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     val myResponsePreset: MutableLiveData<Response<PresetItem>> = MutableLiveData()
 
 
-    fun getPlace() {
+    fun getPlace(lan: String) {
         viewModelScope.launch {
-            val response = repository.getPlaces()
+            val response = repository.getPlaces(lan)
             myResponse.value = response
         }
     }

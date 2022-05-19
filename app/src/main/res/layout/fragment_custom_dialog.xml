@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:gravity="center"
+        android:fontFamily="@font/roboto_medium"
         android:textColor="@color/black"
         android:text="Вы действительно хотите завершить экскурсию?"/>
 
@@ -23,9 +24,10 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:layout_weight="1"
+            android:fontFamily="@font/roboto_medium"
             android:textSize="18sp"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="#0B6AFF"
             android:text="НЕТ"/>
         <TextView
             android:id="@+id/tv_yes"
@@ -34,9 +36,10 @@
             android:layout_weight="3"
             android:padding="5dp"
             android:textSize="18sp"
+            android:fontFamily="@font/roboto_medium"
 
             android:gravity="center"
-            android:textColor="@color/red"
+            android:textColor="#C95038"
             android:text="Да, завершить"/>
 
     </LinearLayout>

@@ -8,14 +8,23 @@
     <fragment
         android:id="@+id/mainPageFragment"
         android:name="com.GDSC_IUCA.iuca_tour.ui.MainPageFragment"
-        android:label="fragment_main_page"
         tools:layout="@layout/fragment_main_page" >
         <action
             android:id="@+id/action_mainPageFragment_to_testFragment"
-            app:destination="@id/Map" />
+            app:destination="@id/Map"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
+            />
         <action
             android:id="@+id/action_mainPageFragment_to_my_nav"
-            app:destination="@id/my_nav" />
+            app:destination="@id/my_nav"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
+            />
 
 
     </fragment>
@@ -30,12 +39,16 @@
     <fragment
         android:id="@+id/Map"
         android:name="com.GDSC_IUCA.iuca_tour.ui.Map2Fragment"
-        android:label="Map"
         tools:layout="@layout/fragment_map2" >
 
         <action
             android:id="@+id/action_testFragment_to_mainPageFragment"
-            app:destination="@id/mainPageFragment" />
+            app:destination="@id/mainPageFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
+            />
 
     </fragment>
 

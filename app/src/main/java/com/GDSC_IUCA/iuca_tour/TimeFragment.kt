@@ -18,13 +18,12 @@ class TimeFragment : Fragment(R.layout.fragment_time) {
         val lng = args.lng
 
         binding.btnShortTour.setOnClickListener {
-            val action = TimeFragmentDirections.actionTimeFragmentToStartExcurtionFragment("ENG", 2)
+            val action = TimeFragmentDirections.actionTimeFragmentToStartExcurtionFragment(lng, 1)
             Navigation.findNavController(view).navigate(action)
-
         }
 
         binding.btnLongTour.setOnClickListener {
-            val action = TimeFragmentDirections.actionTimeFragmentToStartExcurtionFragment("ENG", 1)
+            val action = TimeFragmentDirections.actionTimeFragmentToStartExcurtionFragment(lng, 2)
             Navigation.findNavController(view).navigate(action)
         }
     }

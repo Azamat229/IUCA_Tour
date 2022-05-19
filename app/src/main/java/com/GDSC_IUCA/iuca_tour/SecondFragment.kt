@@ -1,5 +1,6 @@
 package com.GDSC_IUCA.iuca_tour
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -22,5 +23,13 @@ class SecondFragment : Fragment(R.layout.fragment_second) {
             val action = SecondFragmentDirections.actionSecondFragmentToTimeFragment(lng)
             Navigation.findNavController(view).navigate(action)
         }
+
+        // Shared preference
+        val sharedPre = this.activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val editor = sharedPre?.edit()
+
+        editor?.apply {
+            putInt("startFragment", 1)
+        }?.apply()
     }
 }

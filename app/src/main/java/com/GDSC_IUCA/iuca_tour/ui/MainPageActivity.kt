@@ -13,7 +13,6 @@ import com.GDSC_IUCA.iuca_tour.databinding.ActivityMainPageBinding
 import com.google.android.material.navigation.NavigationView
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import com.GDSC_IUCA.iuca_tour.ViewModel.ActivityViewModel
 
@@ -30,8 +29,10 @@ class MainPageActivity : AppCompatActivity() {
         binding.btnExit.setOnClickListener {
             var dialog = CustomDialogFragment()
             dialog.show(supportFragmentManager, "customDialog")
-
         }
+
+
+
 
         setContentView(binding.root)
         setSupportActionBar(binding.appBarMain.toolbar)
@@ -46,6 +47,9 @@ class MainPageActivity : AppCompatActivity() {
             setOf(R.id.mainPageFragment, R.id.mainPageAltFragment),
             drawerLayout
         )
+
+
+
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         navView.setupWithNavController(navController)

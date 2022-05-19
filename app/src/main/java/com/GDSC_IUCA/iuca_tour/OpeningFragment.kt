@@ -1,7 +1,9 @@
 package com.GDSC_IUCA.iuca_tour
 
+import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -15,18 +17,29 @@ class OpeningFragment : Fragment(R.layout.fragment_opening) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentOpeningBinding.bind(view)
 
-        binding.textView4.setOnClickListener {
-            Navigation.findNavController(view)
-                .navigate(R.id.action_openingFragment_to_languageFragment)
-        }
+//        binding.textView4.setOnClickListener {
+//            Navigation.findNavController(view)
+//                .navigate(R.id.action_openingFragment_to_languageFragment)
+//        }
 
 
-        val SPLASH_TIME_OUT:Long = 1000
+        // Shared preference
+        val sharedPre = this.activity?.getSharedPreferences("pref", MODE_PRIVATE)
+        val startFragment = sharedPre?.getInt("startFragment", 0)
+        Log.e("START_FRAG", startFragment.toString())
+
+
+        val SPLASH_TIME_OUT: Long = 800
 
         Handler().postDelayed(Runnable {
-            Navigation.findNavController(view)
-                .navigate(R.id.action_openingFragment_to_languageFragment)
-            // Code to start new activity and finish this one
+
+            if (startFragment == 1) {
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_openingFragment_to_secondFragment)
+            } else {
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_openingFragment_to_languageFragment)
+            }
         }, SPLASH_TIME_OUT)
     }
 

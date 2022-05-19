@@ -13,7 +13,11 @@
         tools:layout="@layout/fragment_second" >
         <action
             android:id="@+id/action_secondFragment_to_timeFragment"
-            app:destination="@id/timeFragment" />
+            app:destination="@id/timeFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
         <argument
             android:name="lng"
             app:argType="string"
@@ -23,7 +27,7 @@
     <fragment
         android:id="@+id/thirdFragment"
         android:name="com.GDSC_IUCA.iuca_tour.ThirdFragment"
-        android:label="Settings"
+        android:label="Это МЫ"
         tools:layout="@layout/fragment_third" />
     <fragment
         android:id="@+id/firstFragment"
@@ -37,10 +41,14 @@
         tools:layout="@layout/fragment_opening" >
         <action
             android:id="@+id/action_openingFragment_to_languageFragment"
-            app:destination="@id/languageFragment" />
+            app:destination="@id/languageFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
         <action
-            android:id="@+id/action_openingFragment_to_startExcurtionFragment"
-            app:destination="@id/startExcurtionFragment" />
+            android:id="@+id/action_openingFragment_to_secondFragment"
+            app:destination="@id/secondFragment" />
     </fragment>
     <fragment
         android:id="@+id/languageFragment"
@@ -50,7 +58,17 @@
         <action
             android:id="@+id/action_languageFragment_to_secondFragment"
             app:destination="@id/secondFragment"
-            app:popUpTo="@id/languageFragment"/>
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_languageFragment_to_notifyFragment"
+            app:destination="@id/notifyFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"/>
     </fragment>
     <fragment
         android:id="@+id/timeFragment"
@@ -59,12 +77,25 @@
         tools:layout="@layout/fragment_time" >
         <action
             android:id="@+id/action_timeFragment_to_startExcurtionFragment"
-            app:destination="@id/startExcurtionFragment" />
+            app:destination="@id/startExcurtionFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"/>
+
         <argument
             android:name="lng"
             app:argType="string"
             app:nullable="true"
             android:defaultValue="ENG" />
+        <action
+            android:id="@+id/action_timeFragment_to_longTernFragment"
+            app:destination="@id/longTernFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
+            />
     </fragment>
     <fragment
         android:id="@+id/startExcurtionFragment"
@@ -80,6 +111,33 @@
             android:name="tourDuration"
             app:argType="integer"
             android:defaultValue="1" />
+    </fragment>
+    <fragment
+        android:id="@+id/notifyFragment"
+        android:name="com.GDSC_IUCA.iuca_tour.NotifyFragment"
+        android:label="fragment_notify"
+        tools:layout="@layout/fragment_notify" >
+        <action
+            android:id="@+id/action_notifyFragment_to_languageFragment2"
+            app:destination="@id/languageFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/longTernFragment"
+        android:name="com.GDSC_IUCA.iuca_tour.LongTernFragment"
+        android:label="fragment_long_tern"
+        tools:layout="@layout/fragment_long_tern" >
+        <action
+            android:id="@+id/action_longTernFragment_to_timeFragment"
+            app:destination="@id/timeFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
+            />
     </fragment>
 
 </navigation>

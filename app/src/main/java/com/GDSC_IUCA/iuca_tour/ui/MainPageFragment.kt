@@ -9,12 +9,15 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.text.method.ScrollingMovementMethod
-import android.transition.*
+import android.transition.ChangeBounds
+import android.transition.Transition
+import android.transition.TransitionManager
 import android.util.Log
 import android.view.View
 import android.view.animation.OvershootInterpolator
 import android.widget.ListView
 import android.widget.SeekBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
@@ -56,11 +59,13 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         binding = FragmentMainPageBinding.bind(view)
 
 
+
         // Shared preference
         val sharedPre = this.activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
 
         val counter = sharedPre?.getInt("counter", 0)
         val setOrderedPlaces = sharedPre?.getString("setOrderedPlaces", null)
+        Log.e("SET_ORDER_PLACES", setOrderedPlaces.toString())
 
         val listOrderedPlaces: List<Char> = setOrderedPlaces!!.toList() // ordered list of places
 
@@ -70,7 +75,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         var lastElement = listOrderedPlaces.last().digitToInt() // green color
         if (lastElement == idCurrPlace) {
 //            Log.d("Finished", "$lastElement id:$idCurrPlace")
-            binding.nextStationBtn.text = "Finished"
+            binding.nextStationBtn.text = "ЗАВЕРШИТЬ ЭКСКУРСИЮ"
             binding.nextStationBtn.backgroundTintList =
                 ColorStateList.valueOf(resources.getColor(R.color.green))
         }
@@ -83,9 +88,11 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        val lang = sharedPre.getString("lang", null)
 
-        viewModel.getItemPlace(idCurrPlace)
-        viewModel.getPlace()
+
+        viewModel.getItemPlace(idCurrPlace+3) ///Azamat hard code
+        viewModel.getPlace(lang!!)
 
         viewModel.myResponseItem.observe(viewLifecycleOwner, Observer { response ->
             viewModel.myResponse.observe(viewLifecycleOwner, Observer { res ->
@@ -93,17 +100,17 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
                 listOrderedPlaces.forEach {
                     namesOrderedPlaces.add(res.body()!![it.digitToInt() - 1].name)
+
                     Log.d("NAMES", namesOrderedPlaces.toString())
                 }
 
                 adapter = ListBaseAdapter(res.body()!!, namesOrderedPlaces, counter)
                 requireActivity().findViewById<ListView>(R.id.activity_list_view).adapter = adapter
-
             })
-
 
             if (response.isSuccessful) {
                 binding.titlePlace.text = response.body()?.name
+                (requireActivity() as MainPageActivity).title = response.body()?.name!!.uppercase()
 
                 val imageList = ArrayList<SlideModel>() // Create image list
 
@@ -111,17 +118,18 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
                     //    < - - - - SLIDER IMAGES- - - - >
 
                     val t = it.replace("[]", "")
-                    val t2 = "http://159.89.97.31$t"
+                    val t2 = "http://tour.iuca.kg$t"
                     imageList.add(SlideModel(t2))
                 }
 
                 binding.descriptionText.text = response.body()?.desc
 
+
                 val imageS = binding.imageSlider
                 imageS.setImageList(imageList)
 
                 var audio: String = response.body()?.audio.toString()
-                audio = "http://159.89.97.31$audio"
+                audio = "http://tour.iuca.kg$audio"
                 Log.d("response media", audio)
 
                 // < - - - MEDIA PLAYER - - - >
@@ -138,7 +146,6 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
                 binding.tvDue.text = sDuration
 
                 binding.playBtn.setOnClickListener {
-
                     if (!mediaPlayer.isPlaying) {
                         mediaPlayer.start()
                         binding.playBtn.setImageResource(R.drawable.ic_stop)
@@ -198,6 +205,9 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
             } else {
                 Log.d("response", response.errorBody().toString())
+                Log.d("response", response.message())
+                Log.d("response", response.body().toString())
+
             }
         })
         // < - - -  SCROLLING - - - >
@@ -255,4 +265,14 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
                     TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration.toLong()))
         )
     }
+//    fun updateToolbar(){
+//
+//        when(FragmentController.getFrontFragmentTag(this)){
+//            FragmentController.EXAM_FRAGMENT->{
+//                mIndexMenu= INDEX_ADD
+//                updateToolbarTitle("Exam")
+//            }
+//
+//        }
+//    }
 }

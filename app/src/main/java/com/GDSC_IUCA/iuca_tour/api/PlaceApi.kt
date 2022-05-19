@@ -11,7 +11,7 @@ interface PlaceApi {
     @GET("api/place/")
     suspend fun getPlaces(
         @Query("lang")
-        language: String = "ENG"
+        language: String
 
     ): Response<List<PlacesItem>>
 
@@ -29,7 +29,7 @@ interface PlaceApi {
         @Path("tourId") tourId: Int,
     ): Response<PresetItem>
 
-    @GET("api/place/{id}")
+@GET("api/place/{id}")
     suspend fun getItemPlace(
         @Path("id") number: Int,
     @Query("lang")

@@ -26,10 +26,10 @@ class Map2Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMap2Binding.bind(view)
 
-        binding.loseTest.setOnClickListener {
-            val intent = Intent(activity, QrActivity::class.java)
-            activity?.startActivity(intent)
-        }
+//        binding.loseTest.setOnClickListener {
+//            val intent = Intent(activity, QrActivity::class.java)
+//            activity?.startActivity(intent)
+//        }
 
         saveCountData()
         binding.nextStationBtn.setOnClickListener {

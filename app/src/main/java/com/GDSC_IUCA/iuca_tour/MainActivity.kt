@@ -1,24 +1,25 @@
 package com.GDSC_IUCA.iuca_tour
 
-import android.app.Activity
-import android.content.Intent
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.GDSC_IUCA.iuca_tour.databinding.ActivityMainBinding
+import com.GDSC_IUCA.iuca_tour.ui.DialogLangChoseFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity : AppCompatActivity() {
 
+
     private lateinit var binding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,22 +29,22 @@ class MainActivity : AppCompatActivity() {
 //        val view = binding.root
 //        setContentView(view)
 
+
+
+
+
+
         setupNav()
         setSupportActionBar(binding.myToolbar)
 
 
+        val navController2 = findNavController(R.id.fragmentContainerView)
+
         binding.lngBtnTopBar.setOnClickListener {
-            binding.lngBtnTopBar.setImageResource(R.drawable.flag_ch)
-            val fragmentManager: FragmentManager = supportFragmentManager
-            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-            val languageFragment = LanChoseFragment()
-
-//            val bundle = Bundle()
-//            bundle.putString("message", "Hello")
-//            languageFragment.arguments = bundle
-            fragmentTransaction.add(R.id.fragmentContainerView,languageFragment).commit()
-
+            navController2.navigateUp() // to clear previous navigation history
+            navController2.navigate(R.id.languageFragment)
         }
+
 
         // bottom navigation
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
@@ -51,9 +52,10 @@ class MainActivity : AppCompatActivity() {
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-            R.id.firstFragment,
-            R.id.secondFragment,
-            R.id.thirdFragment)
+                R.id.firstFragment,
+                R.id.secondFragment,
+                R.id.thirdFragment
+            )
         )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -62,6 +64,8 @@ class MainActivity : AppCompatActivity() {
 
         val config = AppBarConfiguration(navController.graph)
         findViewById<Toolbar>(R.id.my_toolbar).setupWithNavController(navController, config)
+
+
     }
 
     // hide the bottom nav bar
@@ -80,6 +84,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     private fun showBottomNav() {
         binding.bottomNavigationView.visibility = View.VISIBLE
     }
@@ -87,4 +92,7 @@ class MainActivity : AppCompatActivity() {
     private fun hideBottomNav() {
         binding.bottomNavigationView.visibility = View.GONE
     }
+
+
+
 }

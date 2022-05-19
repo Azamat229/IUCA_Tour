@@ -124,16 +124,17 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="7dp"
 
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="7dp">
 
             <TextView
                 android:id="@+id/title_place"
-                android:layout_width="wrap_content"
+                android:layout_width="240dp"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
                 android:text="Прихожая"
                 android:textAllCaps="true"
                 android:textColor="@color/black2"
@@ -154,7 +155,7 @@
         <TextView
             android:id="@+id/description_text"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:scrollbars="vertical"
@@ -173,7 +174,8 @@
         android:backgroundTint="@color/primary"
         android:text="СЛЕДУЮЩАЯ ОСТАНОВКА"
         android:textColor="@color/white"
-        android:textSize="14sp"
+
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.516"

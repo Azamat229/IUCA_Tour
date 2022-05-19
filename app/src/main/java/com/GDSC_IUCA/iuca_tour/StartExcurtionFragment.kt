@@ -2,6 +2,7 @@ package com.GDSC_IUCA.iuca_tour
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -18,8 +19,10 @@ import com.GDSC_IUCA.iuca_tour.models.PresetItem
 import com.GDSC_IUCA.iuca_tour.repository.Repository
 import com.GDSC_IUCA.iuca_tour.ui.MainPageActivity
 import com.denzcoskun.imageslider.models.SlideModel
+import com.kaopiz.kprogresshud.KProgressHUD
 import retrofit2.Response
 import kotlin.properties.Delegates
+
 
 class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
     private val args: StartExcurtionFragmentArgs by navArgs()
@@ -40,15 +43,32 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentStartExcurtionBinding.bind(view)
 
+
+        val hud = KProgressHUD.create(activity)
+            .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+            .setBackgroundColor(Color.parseColor("#6F7E7D7D"))
+            .show()
+
         // Retrofit code
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        viewModel.getPreset(args.tourDuration)
+        Log.d("TOURDURATION", args.tourDuration.toString())
+        Log.d("LANGI",args.lng.toString())
+
+        viewModel.getPreset(args.tourDuration.toInt())
+        Log.d("viewMode",viewModel.toString())
 
         viewModel.myResponsePreset.observe(viewLifecycleOwner, Observer { response ->
+            Log.d("RESPONSE", response.body().toString())
+
+            //  progressDoalog.dismiss();
 
             if (response.isSuccessful) {
+                hud.dismiss()
+
+                //  progressDoalog.dismiss();
+
                 list = convertMupToList(response)
                 Log.d("PLACE LIST", list.toString())
 
@@ -69,10 +89,16 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
                     Log.d("Set order", 1.toString())
                 }
                 val chars: List<Char> = str!!.toList()
+                Log.d("LIST",chars.toString())
 
 
-                viewModel1.getPlace()
+
+
+                val lang = sharedPre.getString("lang", null)
+                Log.d("LANGI",lang.toString())
+                viewModel1.getPlace(lang!!)
                 viewModel1.myResponse.observe(viewLifecycleOwner, Observer { res ->
+                    Log.d("RESPONSE", res.body().toString())
                     if (res.isSuccessful) {
                         chars.forEach {
                             listOfPlaceNames.add(res.body()!![it.digitToInt() - 1].name)
@@ -107,7 +133,7 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
                         val t = it.images.get(0)
                         Log.d("IMAGE", t.toString())
 
-                        val t2 = "http://159.89.97.31$t"
+                        val t2 = "http://tour.iuca.kg$t"
                         Log.d("IMAGES", t2)
 
                         imageList.add(SlideModel(t2))
@@ -115,10 +141,30 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
 
                     val imageS = binding.imageSlider
                     imageS.setImageList(imageList)
+
+                    // ========   ======
+                    val photoUrls = arrayOf(
+                        "http://example/photo.jpg",
+                        "http://example2.jpeg"
+                    )
+
+
+//                    val viewPager = binding.imageSlider as ViewPager?
+
+//                    if (viewPager != null) {
+//                        viewPager.adapter = CustomImageSliderAdapter(context, photoUrls)
+//                    }
+                    // =======   =======
+
                 })
 
-            } else Log.d("RESPONSE ERROR", response.errorBody().toString())
+            } else{
+                Log.d("RESPONSE ERROR", response.errorBody().toString())
+                hud.dismiss()
+
+            }
         })
+
 
 
         // Navigation code
@@ -129,16 +175,23 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
     }
 
 
+
     private fun convertMupToList(response: Response<PresetItem>): ArrayList<String> {
 
         placesSize = response.body()!!.places.size
         // put places to Map
         for (i in 0 until placesSize) {
             presetMap.put(response.body()!!.places[i].place, response.body()!!.places[i].order)
+//            presetMap.put(response.body()!!.places[i].order,response.body()!!.places[i].place)
+            Log.d("RESPONSE  1:", response.body()!!.places[i].place.toString()+"   2:"+response.body()!!.places[i].order.toString())
+
         }
 
+        Log.d("RESPONSE", response.body().toString())
+        Log.d("RESPONSE_SIZE", response.body()!!.places.size.toString())
+
         for (i in 1 until response.body()!!.places.size + 1) {
-            orderIdOfPlaces.add(presetMap.getValue(i).toString())
+            orderIdOfPlaces.add(presetMap.getValue(i+3).toString()) // Azamat
         }
 
         saveListSharePref(orderIdOfPlaces)
@@ -157,6 +210,7 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
             putInt("counter", 0)
         }?.apply()
     }
+
 
     companion object {
         @JvmStatic

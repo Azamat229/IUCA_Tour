@@ -42,8 +42,8 @@ class ListBaseAdapter(
         val currName = listPlaces[curPlace]
 
         if (position == curPlace) {
-            binding.textIndication.setTextColor(Color.parseColor("#2B54A3"))
-            binding.imageIndication.setImageResource(R.drawable.ic_plase_burger)
+            binding.textIndication.setTextColor(Color.parseColor("#6066E4"))
+            binding.imageIndication.setImageResource(R.drawable.ic_plase_burger_purple)
         }
         if (position < curPlace){
             binding.imageIndication.setImageResource(R.drawable.ic_passed_blue_burger)
