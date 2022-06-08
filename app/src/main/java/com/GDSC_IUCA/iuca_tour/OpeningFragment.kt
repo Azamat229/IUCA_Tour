@@ -29,18 +29,22 @@ class OpeningFragment : Fragment(R.layout.fragment_opening) {
         Log.e("START_FRAG", startFragment.toString())
 
 
-        val SPLASH_TIME_OUT: Long = 800
+        val SPLASH_TIME_OUT: Long = 1000
 
-        Handler().postDelayed(Runnable {
 
-            if (startFragment == 1) {
-                Navigation.findNavController(view)
-                    .navigate(R.id.action_openingFragment_to_secondFragment)
-            } else {
+
+        if (startFragment == 1) {
+            Navigation.findNavController(view)
+                .navigate(R.id.action_openingFragment_to_secondFragment)
+
+        } else {
+
+            Handler().postDelayed(Runnable {
                 Navigation.findNavController(view)
                     .navigate(R.id.action_openingFragment_to_languageFragment)
-            }
-        }, SPLASH_TIME_OUT)
+            }, SPLASH_TIME_OUT)
+        }
+
     }
 
     override fun onResume() {

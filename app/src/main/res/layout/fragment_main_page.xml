@@ -26,6 +26,7 @@
         app:iss_unselected_dot="@drawable/default_unselected_dot"
         app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -135,7 +136,7 @@
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/roboto_medium"
                 android:gravity="center"
-                android:text="Прихожая"
+                android:text=""
                 android:textAllCaps="true"
                 android:textColor="@color/black2"
                 android:textSize="20sp" />
@@ -159,7 +160,7 @@
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:scrollbars="vertical"
-            android:text="@string/collabse_text"
+            android:text=""
             android:textSize="18sp" />
     </LinearLayout>
 

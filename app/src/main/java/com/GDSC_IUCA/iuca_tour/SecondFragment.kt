@@ -1,9 +1,12 @@
 package com.GDSC_IUCA.iuca_tour
 
 import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.GDSC_IUCA.iuca_tour.databinding.FragmentSecondBinding
@@ -31,5 +34,10 @@ class SecondFragment : Fragment(R.layout.fragment_second) {
         editor?.apply {
             putInt("startFragment", 1)
         }?.apply()
+
+
+
     }
+
+
 }

@@ -1,20 +1,25 @@
 package com.GDSC_IUCA.iuca_tour.ui
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.GDSC_IUCA.iuca_tour.MainActivity
 import com.GDSC_IUCA.iuca_tour.R
+import com.GDSC_IUCA.iuca_tour.ViewModel.ActivityViewModel
 import com.GDSC_IUCA.iuca_tour.databinding.ActivityMainPageBinding
 import com.google.android.material.navigation.NavigationView
-import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.ViewModelProvider
-import com.GDSC_IUCA.iuca_tour.ViewModel.ActivityViewModel
+
 
 class MainPageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainPageBinding
@@ -32,8 +37,6 @@ class MainPageActivity : AppCompatActivity() {
         }
 
 
-
-
         setContentView(binding.root)
         setSupportActionBar(binding.appBarMain.toolbar)
         val drawerLayout: DrawerLayout = binding.drawerLayout
@@ -47,7 +50,6 @@ class MainPageActivity : AppCompatActivity() {
             setOf(R.id.mainPageFragment, R.id.mainPageAltFragment),
             drawerLayout
         )
-
 
 
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -77,4 +79,59 @@ class MainPageActivity : AppCompatActivity() {
 
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+    override fun onBackPressed() {
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Вы уверены, что хотите завершить тур")
+
+        builder.setPositiveButton("Да") { dialog, which ->
+            Toast.makeText(applicationContext,
+                "Тур завершон", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, MainActivity::class.java)
+            this.startActivity(intent)
+        }
+
+        builder.setNegativeButton("Нет") { dialog, which ->
+            Toast.makeText(applicationContext,
+                "Продолжить", Toast.LENGTH_SHORT).show()
+        }
+
+
+        builder.show()
+
+
+//        val count = supportFragmentManager.backStackEntryCount
+//        if (count == 0) {
+//            super.onBackPressed()
+//
+//            val sharedPre = this.getSharedPreferences("pref", Context.MODE_PRIVATE)
+//            val editor = sharedPre?.edit()
+//            var counter = sharedPre?.getInt("counter", 0)
+//
+//            Log.d("Counter", counter.toString())
+//
+//            if (counter == 2){
+//                counter = counter.toInt() - 1
+//
+//            }
+//
+//
+//            Log.d("Counter2", counter.toString())
+//
+//            editor?.apply {
+//                putInt("counter", counter!!)
+//            }?.apply()
+//
+//            Log.e("Activity", count.toString())
+//            Log.e("Activity_Counter", counter.toString())
+//
+//            //additional code
+//        } else {
+//            supportFragmentManager.popBackStack()
+//            Log.e("Activity_Counter", "else")
+//
+//        }
+    }
+
 }

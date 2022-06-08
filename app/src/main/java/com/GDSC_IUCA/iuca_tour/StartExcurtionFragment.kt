@@ -3,11 +3,16 @@ package com.GDSC_IUCA.iuca_tour
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.SimpleAdapter
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
@@ -44,109 +49,114 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
         binding = FragmentStartExcurtionBinding.bind(view)
 
 
-        val hud = KProgressHUD.create(activity)
-            .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
-            .setBackgroundColor(Color.parseColor("#6F7E7D7D"))
-            .show()
 
-        // Retrofit code
-        val repository = Repository()
-        val viewModelFactory = MainViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        Log.d("TOURDURATION", args.tourDuration.toString())
-        Log.d("LANGI",args.lng.toString())
 
-        viewModel.getPreset(args.tourDuration.toInt())
-        Log.d("viewMode",viewModel.toString())
 
-        viewModel.myResponsePreset.observe(viewLifecycleOwner, Observer { response ->
-            Log.d("RESPONSE", response.body().toString())
 
-            //  progressDoalog.dismiss();
 
-            if (response.isSuccessful) {
-                hud.dismiss()
+            val hud = KProgressHUD.create(activity)
+                .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                .setBackgroundColor(Color.parseColor("#6F7E7D7D"))
+                .show()
+
+            // Retrofit code
+            val repository = Repository()
+            val viewModelFactory = MainViewModelFactory(repository)
+            viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+            Log.d("TOURDURATION", args.tourDuration.toString())
+            Log.d("LANGI",args.lng.toString())
+
+            viewModel.getPreset(args.tourDuration.toInt())
+            Log.d("viewMode",viewModel.toString())
+
+            viewModel.myResponsePreset.observe(viewLifecycleOwner, Observer { response ->
+                Log.d("RESPONSE", response.body().toString())
 
                 //  progressDoalog.dismiss();
 
-                list = convertMupToList(response)
-                Log.d("PLACE LIST", list.toString())
+                if (response.isSuccessful) {
+                    hud.dismiss()
 
-                listOfPlaceNames = ArrayList()
-                listOfPlaceImages = ArrayList()
-                val repository1 = Repository()
-                val viewModelFactory1 = MainViewModelFactory(repository1)
-                viewModel1 =
-                    ViewModelProvider(this, viewModelFactory1).get(MainViewModel::class.java)
+                    //  progressDoalog.dismiss();
 
-                // Shared preference
-                val sharedPre = this.activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
+                    list = convertMupToList(response)
+                    Log.d("PLACE LIST", list.toString())
 
-                val str = sharedPre?.getString("setOrderedPlaces", null)
-                if (str != null) {
-                    Log.d("Set oder places", str)
-                } else {
-                    Log.d("Set order", 1.toString())
-                }
-                val chars: List<Char> = str!!.toList()
-                Log.d("LIST",chars.toString())
+                    listOfPlaceNames = ArrayList()
+                    listOfPlaceImages = ArrayList()
+                    val repository1 = Repository()
+                    val viewModelFactory1 = MainViewModelFactory(repository1)
+                    viewModel1 =
+                        ViewModelProvider(this, viewModelFactory1).get(MainViewModel::class.java)
+
+                    // Shared preference
+                    val sharedPre = this.activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
+
+                    val str = sharedPre?.getString("setOrderedPlaces", null)
+                    if (str != null) {
+                        Log.d("Set oder places", str)
+                    } else {
+                        Log.d("Set order", 1.toString())
+                    }
+                    val chars: List<Char> = str!!.toList()
+                    Log.d("LIST",chars.toString())
 
 
 
 
-                val lang = sharedPre.getString("lang", null)
-                Log.d("LANGI",lang.toString())
-                viewModel1.getPlace(lang!!)
-                viewModel1.myResponse.observe(viewLifecycleOwner, Observer { res ->
-                    Log.d("RESPONSE", res.body().toString())
-                    if (res.isSuccessful) {
-                        chars.forEach {
-                            listOfPlaceNames.add(res.body()!![it.digitToInt() - 1].name)
-                            listOfPlaceImages.add(res.body()!![it.digitToInt() - 1])
+                    val lang = sharedPre.getString("lang", null)
+                    Log.d("LANGI",lang.toString())
+                    viewModel1.getPlace(lang!!)
+                    viewModel1.myResponse.observe(viewLifecycleOwner, Observer { res ->
+                        Log.d("RESPONSE", res.body().toString())
+                        if (res.isSuccessful) {
+                            chars.forEach {
+                                listOfPlaceNames.add(res.body()!![it.digitToInt() - 1].name)
+                                listOfPlaceImages.add(res.body()!![it.digitToInt() - 1])
+                            }
+                        } else Log.d("RESPONSE ERROR", res.errorBody().toString())
+
+
+                        // Simple adapter
+                        val data = (0 until listOfPlaceNames.size).map {
+
+                            Log.d("LIST SIZE", listOfPlaceNames[it])
+
+                            mapOf(
+                                KEY_TITLE to "${it + 1}. ${listOfPlaceNames.get(it)}"
+                            )
                         }
-                    } else Log.d("RESPONSE ERROR", res.errorBody().toString())
-
-
-                    // Simple adapter
-                    val data = (0 until listOfPlaceNames.size).map {
-
-                        Log.d("LIST SIZE", listOfPlaceNames[it])
-
-                        mapOf(
-                            KEY_TITLE to "${it + 1}. ${listOfPlaceNames.get(it)}"
+                        val adapter = SimpleAdapter(
+                            context,
+                            data,
+                            R.layout.item_custem,
+                            arrayOf(KEY_TITLE),
+                            intArrayOf(R.id.tv_title)
                         )
-                    }
-                    val adapter = SimpleAdapter(
-                        context,
-                        data,
-                        R.layout.item_custem,
-                        arrayOf(KEY_TITLE),
-                        intArrayOf(R.id.tv_title)
-                    )
-                    binding.listView.adapter = adapter
-                    // Slider code
-                    var imageList = ArrayList<SlideModel>() // Create image list
+                        binding.listView.adapter = adapter
+                        // Slider code
+                        var imageList = ArrayList<SlideModel>() // Create image list
 
-                    listOfPlaceImages.forEach {
-                        //    < - - - - SLIDER IMAGES- - - - >
+                        listOfPlaceImages.forEach {
+                            //    < - - - - SLIDER IMAGES- - - - >
 
-                        val t = it.images.get(0)
-                        Log.d("IMAGE", t.toString())
+                            val t = it.images.get(0)
+                            Log.d("IMAGE", t.toString())
 
-                        val t2 = "http://tour.iuca.kg$t"
-                        Log.d("IMAGES", t2)
+                            val t2 = "http://tour.iuca.kg$t"
+                            Log.d("IMAGES", t2)
 
-                        imageList.add(SlideModel(t2))
-                    }
+                            imageList.add(SlideModel(t2))
+                        }
 
-                    val imageS = binding.imageSlider
-                    imageS.setImageList(imageList)
+                        val imageS = binding.imageSlider
+                        imageS.setImageList(imageList)
 
-                    // ========   ======
-                    val photoUrls = arrayOf(
-                        "http://example/photo.jpg",
-                        "http://example2.jpeg"
-                    )
+                        // ========   ======
+                        val photoUrls = arrayOf(
+                            "http://example/photo.jpg",
+                            "http://example2.jpeg"
+                        )
 
 
 //                    val viewPager = binding.imageSlider as ViewPager?
@@ -154,24 +164,26 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
 //                    if (viewPager != null) {
 //                        viewPager.adapter = CustomImageSliderAdapter(context, photoUrls)
 //                    }
-                    // =======   =======
+                        // =======   =======
 
-                })
+                    })
 
-            } else{
-                Log.d("RESPONSE ERROR", response.errorBody().toString())
-                hud.dismiss()
+                } else{
+                    Log.d("RESPONSE ERROR", response.errorBody().toString())
+                    hud.dismiss()
 
+                }
+            })
+
+
+
+            // Navigation code
+            binding.button3.setOnClickListener {
+                val intent = Intent(activity, MainPageActivity::class.java)
+                activity?.startActivity(intent)
             }
-        })
 
 
-
-        // Navigation code
-        binding.button3.setOnClickListener {
-            val intent = Intent(activity, MainPageActivity::class.java)
-            activity?.startActivity(intent)
-        }
     }
 
 
@@ -216,4 +228,6 @@ class StartExcurtionFragment : Fragment(R.layout.fragment_start_excurtion) {
         @JvmStatic
         val KEY_TITLE = "title"
     }
+
+
 }

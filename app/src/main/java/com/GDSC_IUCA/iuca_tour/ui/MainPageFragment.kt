@@ -94,6 +94,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         viewModel.getItemPlace(idCurrPlace+3) ///Azamat hard code
         viewModel.getPlace(lang!!)
 
+
         viewModel.myResponseItem.observe(viewLifecycleOwner, Observer { response ->
             viewModel.myResponse.observe(viewLifecycleOwner, Observer { res ->
                 val namesOrderedPlaces: ArrayList<String> = ArrayList()

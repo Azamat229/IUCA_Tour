@@ -1,8 +1,8 @@
 package com.GDSC_IUCA.iuca_tour
 
-import android.content.Context
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -11,7 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.GDSC_IUCA.iuca_tour.databinding.ActivityMainBinding
-import com.GDSC_IUCA.iuca_tour.ui.DialogLangChoseFragment
+import com.GDSC_IUCA.iuca_tour.utils.NetworkChangeListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private lateinit var binding: ActivityMainBinding
+    var networkChangeListener = NetworkChangeListener()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,6 +67,17 @@ class MainActivity : AppCompatActivity() {
         findViewById<Toolbar>(R.id.my_toolbar).setupWithNavController(navController, config)
 
 
+    }
+
+    override fun onStart() {
+        val intentFilter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(networkChangeListener, intentFilter)
+        super.onStart()
+    }
+
+    override fun onStop() {
+        unregisterReceiver(networkChangeListener)
+        super.onStop()
     }
 
     // hide the bottom nav bar
